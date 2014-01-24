@@ -1,15 +1,22 @@
 -SolarU
- ☐ Build a app the connects to the API and displays the results in a chart.
- ☐ Have a chat that displays.....
-  ☐ admin section
-  ☐ build a framework of an app
-  ☐ 
+  - integrate to the API
+
+  - Build models
+    - Daily production
+    - Lifetime
+    - Weekly
+    - Monthly          
+
+  - Heroku
+   
+  - High charts
+   
+  - Better way to keep calling the data.
 
    ☐ energy production per day
    ☐ power based on weather
    ☐ weather API 
    ☐ Weather by the hour
    ☐ Weather by week
-
-   ☐ compare results to relate to real world things
-   ☐ stats 
+   ☐ compare results to relate to real world
+   ☐ stats
