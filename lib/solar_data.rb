@@ -2,11 +2,11 @@ module SolarData
 
   def initialize 
   end
-
+ 
   @api_key = ENV["SOLAR_U_API_KEY"]
-
+  @api_name = ENV["SOLAR_U_API_URL"]
   def self.get_energy_lifetime
-    uri = URI("https://api.enphaseenergy.com/api/systems/242524/energy_lifetime")
+    uri = URI("#{@api_name}/energy_lifetime")
     params = { :key => @api_key }
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
@@ -16,6 +16,7 @@ module SolarData
     parsedTime = time.scan(/\d{4}-\d{2}-\d{2}/).first.to_datetime.to_i
     x = EnergyLifetimeArray.new
     x.raw_array = responseData
+    # we don't need this
     x.parsed_array = responseData.each_with_index.map do |value, index|
       [ (index + parsedTime + (index * 86400)) * 1000, value ]
     end
@@ -25,7 +26,7 @@ module SolarData
 # ------------------------Monthly totals --------------------------
 # run this on the second day of the month
   def self.get_monthly_production
-    uri=URI("https://api.enphaseenergy.com/api/systems/242524/monthly_production")
+    uri=URI("#{@api_name}/monthly_production")
     lastMonth = Time.now.beginning_of_month - 1.month
     timeStart = lastMonth.strftime("%Y-%m-%d")  
     params = { :key => @api_key, :start => "#{timeStart}" }  
@@ -58,7 +59,7 @@ module SolarData
 
 # ------------------------Weekly Production --------------------------
  def self.get_weekly_production
-    uri=URI("https://api.enphaseenergy.com/api/systems/242524/power_week")
+    uri=URI("#{@api_name}/power_week")
     params = { :key => @api_key}  
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
@@ -80,7 +81,7 @@ module SolarData
 
 # should be done once per day
   def self.get_current_production
-    uri=URI("https://api.enphaseenergy.com/api/systems/242524/power_today")
+    uri=URI("#{@api_name}/power_today")
     params = { :key => @api_key}  
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
@@ -93,7 +94,7 @@ module SolarData
   end
 
   def self.get_new_daily_values
-    uri=URI("https://api.enphaseenergy.com/api/systems/242524/power_today")
+    uri=URI("#{@api_name}/power_today")
     params = { :key => @api_key}  
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
