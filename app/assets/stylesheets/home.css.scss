@@ -1,3 +1,96 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+
+  header{
+    height: 5%;
+    width: 100%;
+    border: 2px dotted red;
+  }
+
+  .top{
+    height: 25%;
+    width: 100%;
+    border: 6px solid blue;
+
+    .top-row{
+      border: 2px dotted green;
+      height: 100%;
+    }
+
+    .top-left{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+    .top-center{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+    .top-right{
+      width: 50%;
+      border: 2px dotted green;
+    }
+  }
+
+  .center{
+    height: 25%;
+    width: 100%;
+    border: 6px solid red;
+
+    .center-row{
+      border: 2px dotted yellow;
+      height: 100%;
+    }
+
+    .center-left{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+    .center-center{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+    .center-right{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+  }
+
+  .bottom{
+    height: 25%;
+    width: 100%;
+    border: 6px solid blue;
+
+    .bottom-row{
+      border: 2px dotted yellow;
+      height: 100%;
+    }
+
+    .bottom-left{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+    .bottom-center{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+    .bottom-right{
+      width: 50%;
+      border: 2px dotted green;
+    }
+
+  }
+  footer{
+    height: 5%;
+    width: 100%;
+    border: 2px dotted blue;
+  }
+}
