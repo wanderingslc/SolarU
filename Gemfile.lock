@@ -35,6 +35,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
+    callsite (0.0.11)
     capybara (2.2.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -53,6 +54,9 @@ GEM
     coffee-script-source (1.6.3)
     daemons (1.1.9)
     debug_inspector (0.0.2)
+    em-websocket (0.5.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
@@ -75,9 +79,19 @@ GEM
     guard-bundler (2.0.0)
       bundler (~> 1.0)
       guard (~> 2.2)
+    guard-livereload (2.1.1)
+      em-websocket (~> 0.5)
+      guard (~> 2.0)
+      multi_json (~> 1.8)
+    guard-minitest (2.2.0)
+      guard (~> 2.0)
+      minitest (>= 3.0)
+    guard-pow (2.0.0)
+      guard (~> 2.0)
     guard-rails (0.4.7)
       guard (>= 0.2.2)
     hike (1.2.3)
+    http_parser.rb (0.5.3)
     hub (1.11.1)
     i18n (0.6.9)
     journey (1.0.4)
@@ -93,6 +107,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.2.8)
+      callsite
+      rack-contrib
+      railties
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
@@ -111,11 +129,17 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
+    rack-livereload (0.3.15)
+      rack
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -144,6 +168,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    ruby_gntp (0.3.4)
     sass (3.2.13)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -180,6 +205,9 @@ GEM
       json (>= 1.8.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    xray-rails (0.1.12)
+      coffee-rails
+      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
@@ -192,19 +220,27 @@ DEPENDENCIES
   factory_girl_rails
   figaro
   guard-bundler
+  guard-livereload
+  guard-minitest
+  guard-pow
   guard-rails
   hub
   jquery-rails
+  meta_request
   minitest-spec-rails
   minitest-wscolor
   pg
+  pry-rails
   quiet_assets
+  rack-livereload
   rails (= 3.2.15)
   rails_layout
   rb-fchange
   rb-fsevent
   rb-inotify
+  ruby_gntp
   sass-rails (~> 3.2.3)
   slim-rails
   thin
   uglifier (>= 1.0.3)
+  xray-rails

@@ -1,96 +1,103 @@
 body{
-  font-size: 16px;
+  font-size: 20px;
   height: 100%;
-  width: 100%;
+  width: 99%;
+  padding-right: 5px;
+  background-color: lightgrey;
 
   header{
     height: 5%;
     width: 100%;
-    border: 2px dotted red;
+    border: 4px dotted red;
+    background-color: lightblue;
   }
 
   .top{
     height: 25%;
     width: 100%;
-    border: 6px solid blue;
+    border: 4px solid blue;
+    background-color: pink;
 
     .top-row{
-      border: 2px dotted green;
+      border: 3px dotted green;
       height: 100%;
     }
 
     .top-left{
-      width: 50%;
+      height: 100%;
+      width: 49.5%;
       border: 2px dotted green;
-    }
-
-    .top-center{
-      width: 50%;
-      border: 2px dotted green;
+      float: left;
     }
 
     .top-right{
-      width: 50%;
-      border: 2px dotted green;
-    }
-  }
-
-  .center{
-    height: 25%;
-    width: 100%;
-    border: 6px solid red;
-
-    .center-row{
-      border: 2px dotted yellow;
       height: 100%;
-    }
-
-    .center-left{
-      width: 50%;
+      width: 49.5%;
       border: 2px dotted green;
-    }
-
-    .center-center{
-      width: 50%;
-      border: 2px dotted green;
-    }
-
-    .center-right{
-      width: 50%;
-      border: 2px dotted green;
+      float: right;
     }
 
   }
+
+  // .center{
+  //   height: 25%;
+  //   width: 100%;
+  //   border: 4px solid red;
+
+  //   .center-row{
+  //     height: 100%;
+  //     border: 2px dotted yellow;
+  //   }
+
+  //   .center-left{
+  //     height: 100%;
+  //     width: 49.5%;
+  //     border: 2px dotted green;
+  //     float: left;
+  //   }
+
+  //   .center-right{
+  //     height: 100%;
+  //     width: 49.5%;
+  //     border: 2px dotted green;
+  //     float: right;
+  //   }
+
+  // }
 
   .bottom{
-    height: 25%;
+    // height: 30%;
+    height: 55%;
     width: 100%;
-    border: 6px solid blue;
+    border: 4px solid red;
+    background-color: yellow;
 
     .bottom-row{
-      border: 2px dotted yellow;
+      border: 3px dotted green;
       height: 100%;
     }
 
     .bottom-left{
-      width: 50%;
+      height: 100%;
+      width: 49.5%;
       border: 2px dotted green;
-    }
-
-    .bottom-center{
-      width: 50%;
-      border: 2px dotted green;
+      float: left;
     }
 
     .bottom-right{
-      width: 50%;
+      height: 100%;
+      width: 49.5%;
       border: 2px dotted green;
+      float: right;
     }
 
   }
+
   footer{
-    height: 5%;
+    height: 10%;
     width: 100%;
-    border: 2px dotted blue;
+    border: 4px dotted blue;
+    background-color: cyan;
   }
+
 }
