@@ -15,10 +15,10 @@ module SolarData
     time = parsedResponse["start_date"]
     parsedTime = time.scan(/\d{4}-\d{2}-\d{2}/).first.to_datetime.to_i
     x = EnergyLifetimeArray.new
-    x.raw_array = responseData
-    # we don't need this
-    x.parsed_array = responseData.each_with_index.map do |value, index|
-      [ (index + parsedTime + (index * 86400)) * 1000, value ]
+    x.lifetime_data = responseData
+    # x.raw_array = responseData
+    # x.parsed_array = responseData.each_with_index.map do |value, index|
+    #   [ (index + parsedTime + (index * 86400)) * 1000, value ]
     end
     x.save
   end  
