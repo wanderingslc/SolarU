@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20140127235727) do
 
   create_table "energy_lifetime_arrays", :force => true do |t|
     t.text     "lifetime_data"
+    t.datetime "start_date"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
