@@ -62,6 +62,6 @@ new Highcharts.Chart(
     name: "Watts Produced"
     pointInterval: <%= 86400000 %>,
     pointStart: <%= (Date.new(2013,9,11).beginning_of_day.to_i) * 1000 %>,
-    data: <%= EnergyLifetimeArray.last.raw_array %>
+    data: <%= EnergyLifetimeArray.last.lifetime_data %>
   ]
 )
