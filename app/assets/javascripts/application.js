@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require highcharts-all
+//= require home
+//= require all_time_power
+

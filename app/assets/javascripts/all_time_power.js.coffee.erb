@@ -1,67 +1,69 @@
-new Highcharts.Chart(
-  chart:
-    borderRadius: 0
-    width: ($("#power_all_time").width() * 0.95)
-    height: ($(window).height() * (1 / 5))
-    renderTo: "power_all_time"
-    backgroundColor: "#C3C9C9"
-    plotBackgroundColor: null
-    type: "areaspline"
-    style:
-      color: "#990000"
-      fontSize: "2em"
-      title:
+$(document).ready ->
+  new Highcharts.Chart(
+    chart:
+      borderRadius: 0
+      width: ($("#power_all_time").width())
+      # height: ($(window).height() * (2 / 5))
+      # height: ($("#power_all_time").height() * 0.95)
+      renderTo: "power_all_time"
+      backgroundColor: "#C3C9C9"
+      plotBackgroundColor: null
+      type: "areaspline"
+      style:
+        color: "#990000"
+        fontSize: "2em"
+        title:
+          style:
+            color: "#cc0000"
+            fontWeight: "bold"
+
+    legend:
+      enabled: false
+
+    xAxis:
+      type: "datetime"
+      tickColor: "#dac092"
+      labels:
         style:
           color: "#cc0000"
-          fontWeight: "bold"
 
-  legend:
-    enabled: false
-
-  xAxis:
-    type: "datetime"
-    tickColor: "#dac092"
-    labels:
-      style:
-        color: "#cc0000"
-
-  title:
-    text: "Energy Production Per Day"
-    style:
-      color: "#cc0000"
-      fontWeight: "bold"
-      fontSize: "25px"
-      fontFamily: "'orbitron-light', sans-serif"
-
-  yAxis:
     title:
-      text: "Watt-Hours"
-      lineColor: "#dac092"
+      text: "Energy Production Per Day"
       style:
         color: "#cc0000"
+        fontWeight: "bold"
+        fontSize: "25px"
+        fontFamily: "'orbitron-light', sans-serif"
 
-    labels:
-      style:
-        color: "#cc0000"
+    yAxis:
+      title:
+        text: "Watt-Hours"
+        lineColor: "#dac092"
+        style:
+          color: "#cc0000"
 
-  plotOptions:
-    series:
-      fillColor:
-        linearGradient: [0, 0, 0, 300]
-        stops: [[0, "#00FF64"], [1, "rgba(0, 20, 10, 0.7)"]]
+      labels:
+        style:
+          color: "#cc0000"
 
-      shadow: true
-      offsetX: "3px"
-      offsetY: "3px"
-      opacity: "0.6"
-      lineColor: "#00FF64"
-      marker:
-        enabled: false
+    plotOptions:
+      series:
+        fillColor:
+          linearGradient: [0, 0, 0, 300]
+          stops: [[0, "#00FF64"], [1, "rgba(0, 20, 10, 0.7)"]]
 
-  series: [
-    name: "Watts Produced"
-    pointInterval: <%= 86400000 %>,
-    pointStart: <%= (Date.new(2013,9,11).beginning_of_day.to_i) * 1000 %>,
-    data: <%= EnergyLifetimeArray.last.lifetime_data %>
-  ]
-)
+        shadow: true
+        offsetX: "3px"
+        offsetY: "3px"
+        opacity: "0.6"
+        lineColor: "#00FF64"
+        marker:
+          enabled: false
+
+    series: [
+      name: "Watts Produced"
+      pointInterval: <%= 86400000 %>,
+      pointStart: <%= (Date.new(2013,9,11).beginning_of_day.to_i) * 1000 %>,
+      data: <%= EnergyLifetimeArray.last.lifetime_data %>
+    ]
+  )
