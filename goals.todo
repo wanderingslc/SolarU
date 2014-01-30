@@ -28,4 +28,14 @@
   ☐ Power by hour
   ☐ Power by month 
   
+-Error prevention 
+-Use Ajax to call the API to update the Database
+
+var ajax_call = function() {
+  //your jQuery ajax code
+};
+
+var interval = 1000 * 60 * X; // where X is your every X minutes
+
+setInterval(ajax_call, interval);
 
