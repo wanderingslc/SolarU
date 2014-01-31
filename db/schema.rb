@@ -29,4 +29,12 @@ ActiveRecord::Schema.define(:version => 20140131001934) do
     t.integer  "unix_time"
   end
 
+  create_table "weather_records", :force => true do |t|
+    t.integer  "date"
+    t.text     "cloud_cover"
+    t.text     "temperature"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
 end
