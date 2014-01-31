@@ -57,9 +57,15 @@ module SolarData
 
 
   def self.get_trailing_thirty_days
-    # get the power data for the previous 30 days, starting yesterday
-    uri=URI("#{@api_name}/power_week")
-    params = { :key => @api_key}  
+    today = Time.now.beginning_of_day.strftime('%Y-%m-%d')
+    minus_thirty_days = (Time.now.beginning_of_day - 30.days).strftime('%Y-%m-%d')
+    uri=URI("#{@api_name}/stats")
+    params = { :key => @api_key} 
+    params = { 
+                :key => @api_key,
+                :start => today + 'T00:00-0700',
+                :end => minus_thirty_days + 'T00:00-0700' 
+    }
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
     parsedResponse = JSON.parse(res.body)
