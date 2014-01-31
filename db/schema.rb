@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140131001934) do
+ActiveRecord::Schema.define(:version => 20140131003622) do
 
   create_table "daily_productions", :force => true do |t|
     t.text     "power_array"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(:version => 20140131001934) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "unix_time"
+  end
+
+  create_table "trailing_thirty_day_arrays", :force => true do |t|
+    t.text     "power_array"
+    t.integer  "start_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "weather_records", :force => true do |t|
