@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128004225) do
+ActiveRecord::Schema.define(:version => 20140128034746) do
 
   create_table "energy_lifetime_arrays", :force => true do |t|
     t.text     "lifetime_data"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20140128004225) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "unix_time"
+  end
+
+  create_table "weather_records", :force => true do |t|
+    t.integer  "date"
+    t.text     "cloud_cover"
+    t.text     "temperature"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
