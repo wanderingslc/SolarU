@@ -1,0 +1,75 @@
+$(document).ready -> 
+  new Highcharts.Chart(
+    chart:
+      borderRadius: 0
+      height: $(".top-right").height() 
+      width: $(".top-right").width()
+      renderTo: "daily_production"
+      type: "areaspline"
+      backgroundColor: "#C3C9C9"
+      plotBackgroundColor: null
+      animation: Highcharts.svg
+      style:
+        fontSize: "2em"
+
+    
+    # events: {
+    #   load: function() {
+    #     setInterval(function() {
+    #       <%= SolarData.get_current_production %>
+    #       var chart = $('#current_production').highcharts();
+    #       chart.series[0].setData(<%= DailyProduction.last["production_totals"] %>)
+    #         // is the above actually inserting the new data into the setData function?
+    #     }, 300000);
+    #   }
+    # }
+    title:
+      text: "Energy Produced today, by the Hour"
+      style:
+        color: "#cc0000"
+        fontWeight: "bold"
+        fontSize: "25px"
+        fontFamily: "'orbitron-light', sans-serif"
+
+    legend:
+      enabled: false
+
+    xAxis:
+      type: "datetime"
+      tickColor: "#dac092"
+      labels:
+        style:
+          color: "#cc0000"
+
+    yAxis:
+      title:
+        text: "Watt-Hours"
+        style:
+          color: "#cc0000"
+
+      labels:
+        style:
+          color: "#cc0000"
+
+    plotOptions:
+      series:
+        fillColor:
+          linearGradient: [0, 0, 0, 300]
+          stops: [[0, "#00FF64"], [1, "rgba(0, 20, 10, 0.7)"]]
+
+        shadow: true
+        offsetX: "3px"
+        offsetY: "3px"
+        opacity: "0.6"
+        lineColor: "#00FF64"
+        marker:
+          enabled: false
+
+    series: [
+      <% SolarData.get_current_production %>
+      name: "Today's Production"
+      pointInterval: <%= 300 * 1000 %>
+      pointStart: <%= (DailyProduction.last.unix_time * 1000)  %>
+      data: <%= DailyProduction.last.power_array %>
+    ]
+  )
