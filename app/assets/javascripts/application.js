@@ -15,4 +15,5 @@
 //= require highcharts-all
 //= require home
 //= require all_time_power
+//= require daily_production
 

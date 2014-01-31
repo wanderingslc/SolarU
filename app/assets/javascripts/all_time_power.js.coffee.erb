@@ -1,10 +1,10 @@
-$(document).ready ->
+$(document).ready -> 
   new Highcharts.Chart(
     chart:
       borderRadius: 0
-      width: ($("#power_all_time").width())
+      width: $(".bottom-row").width()
       # height: ($(window).height() * (2 / 5))
-      # height: ($("#power_all_time").height() * 0.95)
+      height: $(".bottom-row").height()
       renderTo: "power_all_time"
       backgroundColor: "#C3C9C9"
       plotBackgroundColor: null
@@ -63,7 +63,7 @@ $(document).ready ->
     series: [
       name: "Watts Produced"
       pointInterval: <%= 86400000 %>,
-      pointStart: <%= (Date.new(2013,9,11).beginning_of_day.to_i) * 1000 %>,
+      pointStart: <%= EnergyLifetimeArray.last.unix_time * 1000 %>
       data: <%= EnergyLifetimeArray.last.lifetime_data %>
     ]
   )

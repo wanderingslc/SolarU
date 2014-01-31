@@ -2,7 +2,7 @@
   ✔ integrate to the API @done (14-01-30 14:09)
 
   - Build models
-    - Daily production and current
+    ✔ Daily production and current @done (14-01-30 18:46)
     ✔ Lifetime/ yearly @done (14-01-30 14:09)
     - Weekly for the last 3 weeks
     - Monthly could show the production and the weather for the last 30 days          
@@ -32,7 +32,7 @@
   
 -Error prevention 
 -Use Ajax to call the API to update the Database
-
+-Normalizer
 var ajax_call = function() {
   //your jQuery ajax code
 };

@@ -111,15 +111,15 @@ module SolarData
     res = Net::HTTP.get_response(uri)
     parsedResponse = JSON.parse(res.body)
     time = parsedResponse["intervals"].first["end_date"]
-    u_time = time.scan(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}/).first.to_datetime.to_i
+    parsedTime = time.scan(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}/).first.to_datetime
     pow_array = []
     parsedResponse["intervals"].each do |pow|
       pow_array << pow["powr"]
     end
     dailyData = DailyProduction.new
     dailyData.power_array = pow_array
-    dailyData.start_time = time
-    dailyData.unix_time = u_time
+    dailyData.start_time = parsedTime
+    dailyData.unix_time = parsedTime.to_i
     dailyData.save
   end
 
