@@ -5,6 +5,7 @@ module SolarData
   
   @api_key = ENV["SOLAR_U_API_KEY"]
   @api_name = ENV["SOLAR_U_API_URL"]
+
   def self.get_energy_lifetime
     uri = URI("#{@api_name}/energy_lifetime")
     params = { :key => @api_key }
@@ -21,7 +22,7 @@ module SolarData
     # x.raw_array = responseData
     # x.parsed_array = responseData.each_with_index.map do |value, index|
     #   [ (index + parsedTime + (index * 86400)) * 1000, value ]
-     x.save
+    x.save
   end  
  
 # ------------------------Monthly totals --------------------------
@@ -90,33 +91,49 @@ module SolarData
 # ------------------------Current Production --------------------------
 
 # should be done once per day
+  # def self.get_current_production
+  #   uri=URI("#{@api_name}/power_today")
+  #   params = { :key => @api_key}  
+  #   uri.query = URI.encode_www_form(params)
+  #   res = Net::HTTP.get_response(uri)
+  #   parsedResponse = JSON.parse(res.body)
+  #   results = parsedResponse["production"]
+  #   dailyData = DailyProduction.new
+  #   dailyData.production_totals = results
+  #   dailyData.for_day = Time.now
+  #   dailyData.save
+  # end
+
   def self.get_current_production
-    uri=URI("#{@api_name}/power_today")
+    uri=URI("#{@api_name}/stats")
     params = { :key => @api_key}  
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
     parsedResponse = JSON.parse(res.body)
-    results = parsedResponse["production"]
+    time = parsedResponse["intervals"].first["end_date"]
+    u_time = time.scan(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}/).first.to_datetime.to_i
+    pow_array = []
+    parsedResponse["intervals"].each do |pow|
+      pow_array << pow["powr"]
+    end
     dailyData = DailyProduction.new
-    dailyData.production_totals = results
-    dailyData.for_day = Time.now
+    dailyData.power_array = pow_array
+    dailyData.start_time = time
+    dailyData.unix_time = u_time
     dailyData.save
   end
 
-  def self.get_new_daily_values
-    uri=URI("#{@api_name}/power_today")
-    params = { :key => @api_key}  
-    uri.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(uri)
-    parsedResponse = JSON.parse(res.body)
-    results = parsedResponse["production"]
-    difference = results.length - DailyProduction.last.production_totals.length
-    # should it also update it?
-    return results[-difference..results.length]
-  end
-
-
-
+  # def self.get_new_daily_values
+  #   uri=URI("#{@api_name}/stats")
+  #   params = { :key => @api_key}  
+  #   uri.query = URI.encode_www_form(params)
+  #   res = Net::HTTP.get_response(uri)
+  #   parsedResponse = JSON.parse(res.body)
+  #   results = parsedResponse["production"]
+  #   difference = results.length - DailyProduction.last.production_totals.length
+  #   # should it also update it?
+  #   return results[-difference..results.length]
+  # end
 end 
 
 
