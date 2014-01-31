@@ -1,17 +1,19 @@
 -SolarU
-  - integrate to the API
+  ✔ integrate to the API @done (14-01-30 14:09)
 
   - Build models
-    - Daily production
-    - Lifetime
-    - Weekly
-    - Monthly          
+    - Daily production and current
+    ✔ Lifetime/ yearly @done (14-01-30 14:09)
+    - Weekly for the last 3 weeks
+    - Monthly could show the production and the weather for the last 30 days          
 
   - Heroku
    
   - High charts
    
   - Better way to keep calling the data.
+     -Use Ajax to call the API if the data is old.
+     -On page load check the database to see when the last time it was updated.
 
    ☐ energy production per day
    ☐ power based on weather
@@ -28,4 +30,14 @@
   ☐ Power by hour
   ☐ Power by month 
   
+-Error prevention 
+-Use Ajax to call the API to update the Database
+
+var ajax_call = function() {
+  //your jQuery ajax code
+};
+
+var interval = 1000 * 60 * X; // where X is your every X minutes
+
+setInterval(ajax_call, interval);
 

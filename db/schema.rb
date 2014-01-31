@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128034746) do
+ActiveRecord::Schema.define(:version => 20140131001934) do
+
+  create_table "daily_productions", :force => true do |t|
+    t.text     "power_array"
+    t.datetime "start_time"
+    t.integer  "unix_time"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "energy_lifetime_arrays", :force => true do |t|
     t.text     "lifetime_data"
