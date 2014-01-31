@@ -1,9 +1,7 @@
 module WeatherData
   require 'net/http'
 
-  def self.get_power_data #this should go in the solar data
-    # get the power data for the previous 30 days, starting yesterday
-  end
+
 
   def self.get_weather_data
     cloud_container = []

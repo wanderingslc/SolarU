@@ -56,6 +56,15 @@ module SolarData
   end
 
 
+  def self.get_power_data 
+    # get the power data for the previous 30 days, starting yesterday
+    uri=URI("#{@api_name}/power_week")
+    params = { :key => @api_key}  
+    uri.query = URI.encode_www_form(params)
+    res = Net::HTTP.get_response(uri)
+    parsedResponse = JSON.parse(res.body)
+  end
+
 
 
 # ------------------------Weekly Production --------------------------
