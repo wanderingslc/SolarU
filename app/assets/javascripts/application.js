@@ -16,4 +16,5 @@
 //= require home
 //= require all_time_power
 //= require daily_production
+//= require last_seven_days_weather
 

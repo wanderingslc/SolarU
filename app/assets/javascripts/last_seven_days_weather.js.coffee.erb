@@ -1,0 +1,116 @@
+  new Highcharts.Chart({
+    chart: {
+      borderRadius: 0,
+      height: ($( window ).height() * (1/5)),
+      renderTo: "power_and_weather",
+      backgroundColor: "#C3C9C9",
+      plotBackgroundColor: null,
+      type: 'areaspline',
+      style: {
+        color: "#990000",
+        fontSize: '2em',
+        title: {
+          style: {
+            color: '#cc0000',
+            fontWeight: 'bold'
+          }
+        },
+      },
+    },
+    legend: {
+      enabled: false
+    },
+    xAxis: {
+      type: "datetime",
+      tickColor: '#dac092',
+      labels: {
+        style: {
+          color: '#cc0000'
+        }
+      }
+    },
+
+    title: {
+      text: "Energy Production Per Day",
+      style: {
+        color: '#cc0000',
+        fontWeight: 'bold',
+        fontSize: '25px',
+        fontFamily: '\'orbitron-light\', sans-serif'
+      }
+    },
+
+    yAxis: {
+      title: {
+        text: "Watt-Hours",
+        lineColor: '#dac092',
+        style: {
+          color: "#cc0000"
+        }
+      },
+
+      title: {
+        text: 'Cloud Cover',
+        lineColor: '#000000',
+        style: {
+          color: "#cc0000"
+        }
+      },      
+
+      title: {
+        text: "Temperature",
+        lineColor: '#FF0DFF',
+        style: {
+          color: "#cc0000"
+        }
+      },
+
+
+    },
+
+    plotOptions: {
+      series: {
+        fillColor: {
+          linearGradient: [0,0,0,300],
+          stops: [
+            [0, '#00FF64'],
+            [1, 'rgba(0, 20, 10, 0.7)']
+          ]
+        },
+        shadow: true,
+        offsetX: "3px",
+        offsetY:"3px",
+        opacity:"0.6",
+        lineColor: '#00FF64',
+        marker: {
+          enabled: false,
+        }
+      }
+    },
+
+    series: [
+      { 
+        yAxis: 0,
+        name: "Watts Produced",
+        pointInterval: 30000,
+        pointStart: <%= (Time.now.beginning_of_day - 7.days).to_i * 1000 %>,
+        data: <%= LastSevenDaysArray.last.power_array %>
+      },
+
+      { 
+        yAxis: 1, 
+        name: "Cloud Cover",
+        pointInterval: 30000,
+        pointStart: <%= (Time.now.beginning_of_day - 7.days).to_i * 1000 %>,
+        data: <%= WeatherRecord.last.cloud_cover %>
+      },
+
+      { 
+        yAxis: 2, 
+        name: "Watts Produced",
+        pointInterval: 3000,
+        pointStart: <%= (Time.now.beginning_of_day - 7.days).to_i * 1000 %>,
+        data: <%= WeatherRecord.last.temperature %>
+      }     
+    ]       
+  });

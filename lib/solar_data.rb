@@ -1,5 +1,7 @@
 module SolarData
 
+  require 'net/http'
+  
   def initialize 
   end  
   
