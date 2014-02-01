@@ -56,7 +56,7 @@ module SolarData
     end
   end
 
-  
+# ---------------------- Last 7 Days -------------------------------
 def self.get_trailing_seven_days
 
     today = Time.now.beginning_of_day.strftime('%Y-%m-%d')
@@ -74,7 +74,7 @@ def self.get_trailing_seven_days
     end
 
     x = LastSevenDaysArray.new
-    x.power_array = response_array
+    x.power_array = response_array.in_groups_of(6).map{|a| a.reduce(:+)}
     x.start_date = Time.now.beginning_of_day - 7.days.to_i
     x.save
 end
