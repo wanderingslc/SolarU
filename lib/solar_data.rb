@@ -1,5 +1,5 @@
 module SolarData
-
+ 
   def initialize 
   end  
   
