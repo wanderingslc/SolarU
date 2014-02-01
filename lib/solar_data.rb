@@ -56,16 +56,28 @@ module SolarData
     end
   end
 
+  
+def self.get_trailing_seven_days
 
-  def self.get_trailing_thirty_days
-    # get the power data for the previous 30 days, starting yesterday
-    uri=URI("#{@api_name}/power_week")
-    params = { :key => @api_key}  
-    uri.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(uri)
-    parsedResponse = JSON.parse(res.body)
-  end
+    today = Time.now.beginning_of_day.strftime('%Y-%m-%d')
+    minus_seven_days = (Time.now.beginning_of_day - 7.days).strftime('%Y-%m-%d')
+    response_array = []
+    7.times do |x|
+        start_date = ((Time.now.beginning_of_day - 1.day) - x.days).strftime('%Y-%m-%d')
+        end_date = (( Time.now.beginning_of_day ) -x.days).strftime('%Y-%m-%d')
+        uri=URI('https://api.enphaseenergy.com/api/systems/242524/stats?key=40de436ba96bef946401fcf18a66f021&start=' + start_date + 'T00:00-0700' +'&end=' + end_date + 'T00:00-0700')
+        res = Net::HTTP.get_response(uri)
+        parsedResponse = JSON.parse(res.body)
+        parsedResponse['intervals'].each do |y|
+            response_array << y['powr']
+        end
+    end
 
+    x = LastSevenDaysArray.new
+    x.power_array = response_array
+    x.start_date = Time.now.beginning_of_day - 7.days.to_i
+    x.save
+end
 
 
 # ------------------------Weekly Production --------------------------

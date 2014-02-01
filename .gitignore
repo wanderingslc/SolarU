@@ -58,7 +58,7 @@ pickle-email-*.html
 
 # Textmate project files
 /*.tmproj
-
+test_methods.rb
 # vim artifacts
 **.swp
 

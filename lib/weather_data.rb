@@ -29,24 +29,22 @@ module WeatherData
 
 
   def self.get_last_seven_energy
-    uri = URI("https://api.enphaseenergy.com/api/systems/242524/stats")
-    params = { 
-                :key => '40de436ba96bef946401fcf18a66f021',
-                :start => '2014-01-22T00:00-0700',
-                :end => '2014-01-29T00:00-0700'  #this is the beginning of the day on the 29th
-    }
-    uri.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(uri)
-    parsedResponse = JSON.parse(res.body)
-    production_array = []
-    parsedResponse["intervals"].each do |y|
-      production_array << y["powr"]
+    7.times do
+      uri = URI("https://api.enphaseenergy.com/api/systems/242524/stats")
+      params = { 
+                  :key => '40de436ba96bef946401fcf18a66f021',
+                  :start => '2014-01-22T00:00-0700',
+                  :end => '2014-01-29T00:00-0700'  #this is the beginning of the day on the 29th
+      }
+      uri.query = URI.encode_www_form(params)
+      res = Net::HTTP.get_response(uri)
+      parsedResponse = JSON.parse(res.body)
+      production_array = []
+      parsedResponse["intervals"].each do |y|
+        production_array << y["powr"]
     end
 
-    fname = "weather_data.txt"
-    somefile = File.open("weather_data.txt", "w")
-    somefile.puts production_array
-    somefile.close 
+    end
   end
 
   # def self.get_weather_data
