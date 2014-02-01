@@ -1,7 +1,5 @@
 module SolarData
-
-  require 'net/http'
-
+ 
   def initialize 
   end  
   
@@ -28,6 +26,7 @@ module SolarData
   end  
  
 # ------------------------Monthly totals --------------------------
+# run this on the second day of the month
   def self.get_monthly_production
     uri=URI("#{@api_name}/monthly_production")
     lastMonth = Time.now.beginning_of_month - 1.month
@@ -53,10 +52,11 @@ module SolarData
     starting_month = months[0].forMonth.beginning_of_month.to_i
     powerProducedArray.each_with_index.collect do |value, index|
       [ (starting_month + (index).months) * 1000, value]
+      # in the above, you are also converting the time to javascript by multiplying by 1000
     end
   end
 
-# ---------------------- Last 7 Days -------------------------------
+  
 def self.get_trailing_seven_days
 
     today = Time.now.beginning_of_day.strftime('%Y-%m-%d')
@@ -74,7 +74,7 @@ def self.get_trailing_seven_days
     end
 
     x = LastSevenDaysArray.new
-    x.power_array = response_array.in_groups_of(6).map{|a| a.reduce(:+)}
+    x.power_array = response_array
     x.start_date = Time.now.beginning_of_day - 7.days.to_i
     x.save
 end

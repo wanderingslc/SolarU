@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require highcharts-all
+//= require global_highcharts
 //= require home
 //= require all_time_power
 //= require daily_production
