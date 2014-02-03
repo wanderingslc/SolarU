@@ -36,13 +36,6 @@ ActiveRecord::Schema.define(:version => 20140131221021) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "trailing_thirty_day_arrays", :force => true do |t|
-    t.text     "power_array"
-    t.integer  "start_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "weather_records", :force => true do |t|
     t.integer  "date"
     t.text     "cloud_cover"

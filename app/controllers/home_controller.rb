@@ -14,10 +14,12 @@ class HomeController < ApplicationController
  
   private
   def check_data # if database is empty, get data
-    SolarData.get_energy_lifetime 
+    SolarData.get_energy_lifetime
+    SolarData.get_trailing_seven_days 
+    # WeatherData.get_weather_data if WeatherRecord.nil?
   #   SolarData.get_monthly_production if MonthlyData.last.nil?
   #   SolarData.get_weekly_production if WeeklyData.last.nil?
-    SolarData.get_current_production if DailyProduction.last.nil?
+    SolarData.get_current_production
   end
 
 end
