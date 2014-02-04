@@ -6,7 +6,7 @@ module WeatherData
     temperature_container = []
 
     336.times do |x|
-      uri = URI("https://api.forecast.io/forecast/aac5a2bdc4552c42a0426514d27f107a/40.7650,-111.8500," + "#{(1390978800 - (x * 1800)).to_s}" + "?exclude=[minutely,hourly,daily,alerts,flags]")
+      uri = URI("https://api.forecast.io/forecast/" + ENV['WEATHER_API_KEY'] + "/40.7650,-111.8500," + "#{(1390978800 - (x * 1800)).to_s}" + "?exclude=[minutely,hourly,daily,alerts,flags]")
       res = Net::HTTP.get_response(uri)
       parsedResponse = JSON.parse(res.body)
       cloud_container << parsedResponse["currently"]["cloudCover"]
