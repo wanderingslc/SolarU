@@ -1,5 +1,5 @@
 module SolarData
- 
+  require 'net/http'
   def initialize 
   end  
   
@@ -64,8 +64,8 @@ def self.get_trailing_seven_days
     response_array = []
     7.times do |x|
         start_date = ((Time.now.beginning_of_day - 1.day) - x.days).strftime('%Y-%m-%d')
-        end_date = (( Time.now.beginning_of_day ) -x.days).strftime('%Y-%m-%d')
-        uri=URI('https://api.enphaseenergy.com/api/systems/242524/stats?key=40de436ba96bef946401fcf18a66f021&start=' + start_date + 'T00:00-0700' +'&end=' + end_date + 'T00:00-0700')
+        end_date = (( Time.now.beginning_of_day ) - x.days).strftime('%Y-%m-%d')
+        uri=URI(@api_name + '/stats?key=' + @api_key + '&start=' + start_date + 'T00:00-0700' +'&end=' + end_date + 'T00:00-0700')
         res = Net::HTTP.get_response(uri)
         parsedResponse = JSON.parse(res.body)
         parsedResponse['intervals'].each do |y|
