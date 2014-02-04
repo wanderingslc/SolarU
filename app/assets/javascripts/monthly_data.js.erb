@@ -1,0 +1,115 @@
+
+$(document).ready(function(){ 
+
+ new Highcharts.Chart({
+    chart: {
+      borderRadius: 0,
+      renderTo: "monthly_data",
+      type: 'areaspline',
+      backgroundColor: '#C3C9C9',
+      plotBackgroundColor: null
+    },
+
+    title: {
+      text: "Daily Totals",
+      style: {
+        color: '#cc0000',
+        fontWeight: 'bold',
+        fontSize: '25px',
+        fontFamily: '\'orbitron-light\', sans-serif'
+      }
+    },            
+    
+    legend: {
+      enabled: true,
+      align: 'center',
+      style: {
+        fontSize: '15px'  
+      }
+    },
+    
+    xAxis: {
+      categories: [
+       '1',
+       '2',
+       '3',
+       '4',
+       '5',
+       '6',
+       '7',
+       '8',
+       '9',
+       '10',
+       '11',
+       '12',
+       '13',
+       '14',
+       '15',
+       '16',
+       '17',
+       '18',
+       '19',
+       '20',
+       '21',
+       '22',
+       '23',
+       '24',
+       '25',
+       '26',
+       '27',
+       '28',
+       '29',
+       '30',
+       '31'
+      ],
+      labels: {
+        style: {
+          color: '#cc0000'
+        }
+      }
+    },
+
+    yAxis: {
+      title: {
+        text: "Watt-Hours",
+        style: {
+          color: '#cc0000'
+        }
+      },
+                  labels: {
+        style: {
+          color: '#cc0000'
+        }
+      }
+    },
+
+    plotOptions: {
+      series: {
+        // fillColor: {
+        //   linearGradient: [0,0,0,300],
+        //   stops: [
+        //     [0, '#00FF64'],
+        //     [1, 'rgba(0, 20, 10, 0.7)']
+        //   ]
+        // },
+        shadow: true,
+        offsetX: "3px",
+        offsetY:"3px",
+        opacity:"0.3",
+        // lineColor: '#00FF64',
+        marker: {
+          enabled: false,
+        }
+      }
+    },
+
+    series: [
+      <% MonthlyRecord.limit(3).order('id desc').each_with_index do |y, index| %>
+        {   
+          name: '<%= y.month.strftime("%B") %>',
+          data: <%= y.power_produced %>
+        }<% if index <= 1 %>,<% end %>
+      <% end %>
+    ]       
+  });
+});
