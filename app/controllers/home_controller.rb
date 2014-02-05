@@ -13,11 +13,13 @@ class HomeController < ApplicationController
  
  
   private
-  def check_data # if database is empty, get data
-    SolarData.get_energy_lifetime 
-  #   SolarData.get_monthly_production if MonthlyData.last.nil?
-  #   SolarData.get_weekly_production if WeeklyData.last.nil?
-    SolarData.get_current_production if DailyProduction.last.nil?
+  def check_data # if database is empty or old, get data
+    SolarData.get_energy_lifetime if EnergyLifetimeArray.nil? || EnergyLifetimeArray.last.updated_at < (Time.now - 1.day)
+    SolarData.get_trailing_seven_days if LastSevenDaysArray.nil? || LastSevenDaysArray.last.updated_at < (Time.now - 3.day)
+    WeatherData.get_weather_data if WeatherRecord.nil? || WeatherRecord.last.updated_at < (Time.now - 3.day)
+    # SolarData.get_monthly_production if MonthlyData.last.nil?
+    # SolarData.get_weekly_production if WeeklyData.last.nil?
+    SolarData.get_current_production if DailyProduction.nil? || DailyProduction.last.updated_at < (Time.now - 1.day)
   end
 
 end
