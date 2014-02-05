@@ -25,36 +25,45 @@ module SolarData
     x.save
   end  
  
-# ------------------------Monthly totals --------------------------
-# run this on the second day of the month
-  def self.get_monthly_production
-    uri=URI("#{@api_name}/monthly_production")
-    lastMonth = Time.now.beginning_of_month - 1.month
-    timeStart = lastMonth.strftime("%Y-%m-%d")  
-    params = { :key => @api_key, :start => "#{timeStart}" }  
-    uri.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(uri)
-    parsedResponse = JSON.parse(res.body)
-    resultFromCall = parsedResponse["production_wh"]
-    monthlyData = MonthlyData.new
-    monthlyData.powerProduced = resultFromCall
-    monthlyData.forMonth = Time.now
-    monthlyData.save
-  end
+# -------------monthly graph
+# what about arrays that are not older than 1 month?
+def split_months
+  start_date = EnergyLifetimeArray.last.start_date
+  first_month_days = start_date.end_of_month.day - start_date.day 
+  start_date.end_of_month.day != start_date.day ? first_month_days = start_date.end_of_month.day - start_date.day : first_month_days = 1
+  last_month = Time.now.beginning_of_month - 1.month
 
-  def self.retrieve_monthly_data
-    months_count = MonthlyData.count
-    months_count >= 12 ? months = MonthlyData.all[MonthlyData.count - 12..MonthlyData.count] : months = MonthlyData.all
-    powerProducedArray = []
-    MonthlyData.all.each do |x|
-      powerProducedArray << x.powerProduced
+  x = MonthlyRecord.new
+  x.month = start_date
+  x.power_produced = EnergyLifetimeArray.last.lifetime_data.slice(0, first_month_days)
+  x.save
+
+  #array without that first partial month:
+  culled_array = EnergyLifetimeArray.last.lifetime_data.slice(first_month_days, EnergyLifetimeArray.last.lifetime_data.length)
+
+  #number of months that need populating, this excludes the first, partial month
+  months_to_populate = (Time.now.year * 12 + Time.now.month) - (start_date.year * 12 + start_date.month)
+  
+
+  (months_to_populate - 1).times do |x|
+    month = start_date + (x + 1).months
+    
+    if x == 0 
+      i = 0 
     end
-    starting_month = months[0].forMonth.beginning_of_month.to_i
-    powerProducedArray.each_with_index.collect do |value, index|
-      [ (starting_month + (index).months) * 1000, value]
-      # in the above, you are also converting the time to javascript by multiplying by 1000
-    end
+    puts 'this is x: ' + x.to_s
+    puts 'this is the first i: ' + i.to_s
+    new_culled_array = culled_array.slice(i, month.end_of_month.day)
+    y = MonthlyRecord.new
+    y.month = month
+    y.power_produced = new_culled_array
+    y.save
+
+    i = i + month.end_of_month.day
+    puts i
   end
+end
+
 
 # ---------------------- Last 7 Days -------------------------------
 def self.get_trailing_seven_days
