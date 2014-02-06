@@ -25,9 +25,10 @@ module SolarData
     x.save
   end  
  
-# -------------monthly graph
+# ------------- monthly graph ------------- ------------- ------------- 
+
 # what about arrays that are not older than 1 month?
-def split_months
+def split_current_data_into_months
   start_date = EnergyLifetimeArray.last.start_date
   first_month_days = start_date.end_of_month.day - start_date.day 
   start_date.end_of_month.day != start_date.day ? first_month_days = start_date.end_of_month.day - start_date.day : first_month_days = 1
@@ -44,13 +45,9 @@ def split_months
   #number of months that need populating, this excludes the first, partial month
   months_to_populate = (Time.now.year * 12 + Time.now.month) - (start_date.year * 12 + start_date.month)
   
-
   (months_to_populate - 1).times do |x|
     month = start_date + (x + 1).months
-    
-    if x == 0 
-      i = 0 
-    end
+    if x == 0 then i = 0 end
     puts 'this is x: ' + x.to_s
     puts 'this is the first i: ' + i.to_s
     new_culled_array = culled_array.slice(i, month.end_of_month.day)
@@ -58,7 +55,6 @@ def split_months
     y.month = month
     y.power_produced = new_culled_array
     y.save
-
     i = i + month.end_of_month.day
     puts i
   end

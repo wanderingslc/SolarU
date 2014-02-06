@@ -4,6 +4,10 @@ class HomeController < ApplicationController
 
   def index
     @energyLifetimeData = EnergyLifetimeArray.last.lifetime_data
+    @energySavedAllTime = ((EnergyLifetimeArray.last.lifetime_data.reduce(:+) / 1000) * 8.69) / 100
+    @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 8.69) / 100
+    # the above figure comes from http://www.eia.gov/state/print.cfm?sid=UT
+
     # @energyMonthlyData = SolarData.retrieve_monthly_data
     # @energyWeeklyData = SolarData.retrieve_weekly_data
     # @totalOutput = EnergyLifetimeArray.last.raw_array.reduce(:+)

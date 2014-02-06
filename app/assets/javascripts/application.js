@@ -19,4 +19,5 @@
 //= require daily_production
 //= require last_seven_days_weather
 //= require monthly_data
+//= require jquery.flipCounter.1.2
 
