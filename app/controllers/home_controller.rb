@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_filter :check_data, :only => [:index]
 
   def index
-    @energyLifetimeData = EnergyLifetimeArray.last.lifetime_data
+    # @energyLifetimeData = EnergyLifetimeArray.last.lifetime_data
     # @energyMonthlyData = SolarData.retrieve_monthly_data
     # @energyWeeklyData = SolarData.retrieve_weekly_data
     # @totalOutput = EnergyLifetimeArray.last.raw_array.reduce(:+)

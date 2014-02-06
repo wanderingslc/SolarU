@@ -62,7 +62,7 @@ $(document).ready ->
 
     series: [
       name: "Watts Produced"
-      pointInterval: <%= 86400000 %>,
+      pointInterval: 86400000
       pointStart: <%= EnergyLifetimeArray.last.unix_time * 1000 %>
       data: <%= EnergyLifetimeArray.last.lifetime_data %>
     ]
