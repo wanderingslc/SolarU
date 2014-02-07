@@ -86,27 +86,6 @@ def self.get_trailing_seven_days
     x.save
 end
 
-
-# ------------------------Weekly Production --------------------------
- def self.get_weekly_production
-    uri=URI("#{@api_name}/power_week")
-    params = { :key => @api_key}  
-    uri.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(uri)
-    parsedResponse = JSON.parse(res.body)
-    results = parsedResponse["production"]
-    weeklyData = WeeklyData.new
-    weeklyData.weeklyProduction = results.in_groups_of(288).map{|a| a.reduce(:+)}
-    weeklyData.forWeek = Time.now
-    weeklyData.save
-  end
-
-  def self.retrieve_weekly_data
-    weeks_count = WeeklyData.count
-    weeks_count >= 6 ? weeks = WeeklyData.all[WeeklyData.count - 6..WeeklyData.count] : weeks = WeeklyData.all
-   
-  end
-
 # ------------------------Current Production --------------------------
 
 # should be done once per day
