@@ -95,7 +95,12 @@ $(document).ready(function(){
     },
 
     series: [
-
+      <% MonthlyRecord.limit(3).order('id desc').each_with_index do |y, index| %>
+        {   
+          name: '<%= y.month.strftime("%B") %>',
+          data: <%= y.power_produced %>
+        }<% if index <= 1 %>,<% end %>
+      <% end %>
     ]       
   });
 });
