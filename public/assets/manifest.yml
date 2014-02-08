@@ -1,9 +1,0 @@
----
-flipCounter-medium.png: flipCounter-medium-9ebd75d084c2b6b5555f2354427d7aff.png
-flipCounter-medium/index.png: flipCounter-medium-9ebd75d084c2b6b5555f2354427d7aff.png
-application.js: application-d77654168172a0387b6dd3a42e318e14.js
-application/index.js: application-d77654168172a0387b6dd3a42e318e14.js
-application.css: application-60aea74f876f8a7d703aa77274da7099.css
-application/index.css: application-60aea74f876f8a7d703aa77274da7099.css
-jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
-jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
