@@ -7,6 +7,7 @@ gem 'figaro'
 gem 'pg'
 gem 'slim-rails'
 gem 'thin'
+gem 'gon'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -68,7 +68,7 @@ $(document).ready ->
     series: [
       name: "Today's Production"
       pointInterval: (300 * 1000)
-      pointStart: <%= (DailyProduction.last.unix_time * 1000)  %>
-      data: <%= DailyProduction.last.power_array %>
+      pointStart: gon.daily_unix_time
+      data: gon.daily_data
     ]
   )

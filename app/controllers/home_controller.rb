@@ -12,6 +12,23 @@ class HomeController < ApplicationController
     # @totalOutput = EnergyLifetimeArray.last.raw_array.reduce(:+)
     # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
     # @highestOutput = EnergyLifetimeArray.last.raw_array.max
+    
+    gon.lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
+    gon.lifetime_data = EnergyLifetimeArray.last.lifetime_data
+
+    gon.daily_unix_time = DailyProduction.last.unix_time * 1000
+    gon.daily_data = DailyProduction.last.power_array
+
+    gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
+    gon.last_seven_day_data = LastSevenDaysArray.last.power_array
+
+    gon.temperature_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
+    gon.temperature_data = WeatherRecord.last.temperature
+
+    gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
+    gon.cloud_cover_data = WeatherRecord.last.cloud_cover
+
+    # gon.variable_name = variable_value
    end
  
  
