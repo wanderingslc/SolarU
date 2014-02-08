@@ -23,27 +23,3 @@
 #counter_all_time
   p Money saved by this array:
   input name="counter-value" type="hidden" value=@energySavedAllTime
-
-  javascript:
-    jQuery(document).ready(function($) {
-            $("#counter_all_time").flipCounter({
-              numFractionalDigits:2, // number of places right of the decimal point to maintain
-              digitHeight:40, // the height of each digit in the flipCounter-medium.png sprite image
-              digitWidth:30, // the width of each digit in the flipCounter-medium.png sprite image
-              imagePath:"../../assets/flipCounter-medium.png"
-            });            
-    });
-
-#counter_yesterday
-  p Money saved by this array yesterday:
-  input name="counter-value" type="hidden" value=@energySavedYesterday
-
-  javascript:
-    jQuery(document).ready(function($) {
-            $("#counter_yesterday").flipCounter({
-              numFractionalDigits:2, // number of places right of the decimal point to maintain
-              digitHeight:40, // the height of each digit in the flipCounter-medium.png sprite image
-              digitWidth:30, // the width of each digit in the flipCounter-medium.png sprite image
-              imagePath:"../../assets/flipCounter-medium.png"
-            });            
-    });
