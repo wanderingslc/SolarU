@@ -4,8 +4,8 @@ class HomeController < ApplicationController
 
   def index
     @energyLifetimeData = EnergyLifetimeArray.last.lifetime_data
-    @energySavedAllTime = ((EnergyLifetimeArray.last.lifetime_data.reduce(:+) / 1000) * 8.69) / 100
-    @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 8.69) / 100
+    # @energySavedAllTime = ((EnergyLifetimeArray.last.lifetime_data.reduce(:+) / 1000) * 8.69) / 100
+    # @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 8.69) / 100
     # the above figure comes from http://www.eia.gov/state/print.cfm?sid=UT
     # @energyMonthlyData = SolarData.retrieve_monthly_data
     # @energyWeeklyData = SolarData.retrieve_weekly_data
@@ -28,9 +28,21 @@ class HomeController < ApplicationController
     gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
     gon.cloud_cover_data = WeatherRecord.last.cloud_cover
 
-    # gon.variable_name = variable_value
+
+    MonthlyRecord.limit(3).order('id desc').each_with_index do |month, index|
+        if index == 0
+            gon.monthly_name_one = month.month.strftime("%B") 
+            gon.monthly_data_one = month.power_produced
+        elsif index == 1
+            gon.monthly_name_two = month.month.strftime("%B") 
+            gon.monthly_data_two = month.power_produced
+        else
+            gon.monthly_name_three = month.month.strftime("%B") 
+            gon.monthly_data_three = month.power_produced            
+        end
    end
- 
+     # gon.variable_name = variable_value
+ end
  
   private
   def check_data # if database is empty or old, get data

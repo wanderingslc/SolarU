@@ -95,12 +95,18 @@ $(document).ready(function(){
     },
 
     series: [
-      <% MonthlyRecord.limit(3).order('id desc').each_with_index do |y, index| %>
-        {   
-          name: '<%= y.month.strftime("%B") %>',
-          data: <%= y.power_produced %>
-        }<% if index <= 1 %>,<% end %>
-      <% end %>
+      {
+        name: gon.monthly_name_one,
+        data: gon.monthly_data_one
+      },
+      {
+        name: gon.monthly_name_two,
+        data: gon.monthly_data_two
+      },
+      {
+        name: gon.monthly_name_three,
+        data: gon.monthly_data_three
+      }
     ]       
   });
 });
