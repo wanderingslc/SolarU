@@ -13,16 +13,7 @@ $(document).ready ->
         fontSize: "2em"
 
     
-    # events: {
-    #   load: function() {
-    #     setInterval(function() {
-    #       <%= SolarData.get_current_production %>
-    #       var chart = $('#current_production').highcharts();
-    #       chart.series[0].setData(<%= DailyProduction.last["production_totals"] %>)
-    #         // is the above actually inserting the new data into the setData function?
-    #     }, 300000);
-    #   }
-    # }
+    
     title:
       text: "Energy Produced today, by the Hour"
       style:
