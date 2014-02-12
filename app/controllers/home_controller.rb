@@ -22,17 +22,13 @@ class HomeController < ApplicationController
     # last seven days -----------------------------------------------------------------------------
     gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
     gon.last_seven_day_data = LastSevenDaysArray.last.power_array
-
     gon.temperature_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
-
-
 
     temperature_container = []
     WeatherRecord.limit(7).order('id desc').each do |x|
         temperature_container << x.temperature 
     end
     gon.temperature_data = temperature_container.flatten
-
     gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
 
     cloud_container = []
@@ -40,7 +36,6 @@ class HomeController < ApplicationController
         cloud_container << x.cloud_cover
     end
     gon.cloud_cover_data = cloud_container.flatten
-
 
     MonthlyRecord.limit(3).order('id desc').each_with_index do |month, index|
         if index == 0
