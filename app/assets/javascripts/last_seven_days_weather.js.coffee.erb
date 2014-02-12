@@ -69,20 +69,24 @@ $(document).ready ->
 
     series: [ 
       yAxis: 0
+      min: 0
+      startOnTick: true
       name: "Watts Produced"
-      pointInterval: 180000
+      pointInterval: 1800000
       pointStart: gon.last_seven_day_time
       data: gon.last_seven_day_data
      ,
       yAxis: 1
       name: "Temperature"
-      pointInterval: 180000
+      pointInterval: 1800000
       pointStart: gon.temperature_time
       data: gon.temperature_data, dashStyle: 'shortdot'
      ,
       yAxis: 2
+      min: 0
+      max: 1
       name: "Cloud Cover"
-      pointInterval: 180000
+      pointInterval: 1800000
       pointStart: gon.cloud_cover_time
       data: gon.cloud_cover_data, dashStyle: 'shortdash'
     ]
