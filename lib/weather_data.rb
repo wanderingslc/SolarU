@@ -1,27 +1,43 @@
 module WeatherData
   require 'net/http'
 
+  # run once to seed the database
   def self.get_weather_data
-    cloud_container = []
-    temperature_container = []
+     
+    unless WeatherRecord.any?
+      days_to_populate = 7
+    else 
+      last_record_time = Time.at(WeatherRecord.last.date)
+      days_to_populate = Time.now.yday - last_record_time.yday
+    end
+    if days_to_populate > 7 
+      days_to_populate = 7
+    end
 
-    336.times do |x|
-      uri = URI("https://api.forecast.io/forecast/" + ENV['WEATHER_API_KEY'] + "/40.7650,-111.8500," + (1390978800 - (x * 1800)).to_s + "?exclude=[minutely,hourly,daily,alerts,flags]")
-      res = Net::HTTP.get_response(uri)
-      parsedResponse = JSON.parse(res.body)
-      cloud_container << parsedResponse["currently"]["cloudCover"]
-      temperature_container << parsedResponse["currently"]["temperature"] 
-      puts uri
+    starting_day = Time.now.beginning_of_day - days_to_populate.days
+
+    days_to_populate.times do |by_the_day|
+      cloud_container = []
+      temperature_container = []
+
+      48.times do |x|
+        uri = URI("https://api.forecast.io/forecast/" + ENV['WEATHER_API_KEY'] + "/40.7650,-111.8500," + ((starting_day).to_i - (x * 1800)).to_s + "?exclude=[minutely,hourly,daily,alerts,flags]")
+        res = Net::HTTP.get_response(uri)
+        parsedResponse = JSON.parse(res.body)
+        cloud_container << parsedResponse["currently"]["cloudCover"]
+        temperature_container << parsedResponse["currently"]["temperature"] 
+        puts "call number #{x + 1} of day #{by_the_day + 1}"
+      end
+
+      x = WeatherRecord.new
+      x.temperature = temperature_container
+      x.cloud_cover = cloud_container
+      x.date = starting_day.to_i
+      x.save
+      starting_day += 1.days
     end
     
-    x = WeatherRecord.new
-    x.temperature = temperature_container
-    x.cloud_cover = cloud_container
-    x.date = Time.now.beginning_of_day - 1.day.to_i
-    x.save
-  end
 
-  def self.get_temperature
   end
 
 end

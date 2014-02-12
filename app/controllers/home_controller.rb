@@ -19,14 +19,27 @@ class HomeController < ApplicationController
     gon.daily_unix_time = DailyProduction.last.unix_time * 1000
     gon.daily_data = DailyProduction.last.power_array
 
+    # last seven days -----------------------------------------------------------------------------
     gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
     gon.last_seven_day_data = LastSevenDaysArray.last.power_array
 
     gon.temperature_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
-    gon.temperature_data = WeatherRecord.last.temperature
+
+
+
+    temperature_container = []
+    WeatherRecord.limit(7).order('id desc').each do |x|
+        temperature_container << x.temperature 
+    end
+    gon.temperature_data = temperature_container.flatten
 
     gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
-    gon.cloud_cover_data = WeatherRecord.last.cloud_cover
+
+    cloud_container = []
+    WeatherRecord.limit(7).order('id desc').each do |x|
+        cloud_container << x.cloud_cover
+    end
+    gon.cloud_cover_data = cloud_container.flatten
 
 
     MonthlyRecord.limit(3).order('id desc').each_with_index do |month, index|
@@ -40,9 +53,8 @@ class HomeController < ApplicationController
             gon.monthly_name_three = month.month.strftime("%B") 
             gon.monthly_data_three = month.power_produced            
         end
-   end
-     # gon.variable_name = variable_value
- end
+    end
+  end
  
   private
   def check_data # if database is empty or old, get data
