@@ -21,12 +21,14 @@ module WeatherData
       temperature_container = []
 
       48.times do |x|
-        uri = URI("https://api.forecast.io/forecast/" + ENV['WEATHER_API_KEY'] + "/40.7650,-111.8500," + ((starting_day).to_i - (x * 1800)).to_s + "?exclude=[minutely,hourly,daily,alerts,flags]")
+        uri = URI("https://api.forecast.io/forecast/" + ENV['WEATHER_API_KEY'] + "/40.7650,-111.838915," + ((starting_day).to_i + (x * 1800)).to_s + "?exclude=[minutely,hourly,daily,alerts,flags]")
         res = Net::HTTP.get_response(uri)
         parsedResponse = JSON.parse(res.body)
         cloud_container << parsedResponse["currently"]["cloudCover"]
         temperature_container << parsedResponse["currently"]["temperature"] 
-        puts "call number #{x + 1} of day #{by_the_day + 1}"
+        puts "call  #{x + 1} of 48 for day #{by_the_day + 1} of #{ days_to_populate }"
+        puts uri
+        puts Time.at((starting_day).to_i + (x * 1800))
       end
 
       x = WeatherRecord.new
@@ -34,7 +36,9 @@ module WeatherData
       x.cloud_cover = cloud_container
       x.date = starting_day.to_i
       x.save
-      starting_day += 1.days
+      starting_day += 1.day
+      puts "Starting day: #{starting_day}"
+
     end
     
 

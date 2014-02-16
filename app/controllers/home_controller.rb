@@ -25,14 +25,14 @@ class HomeController < ApplicationController
     gon.temperature_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
 
     temperature_container = []
-    WeatherRecord.limit(7).order('id desc').each do |x|
+    WeatherRecord.limit(7).order('id asc').each do |x|
         temperature_container << x.temperature 
     end
     gon.temperature_data = temperature_container.flatten
     gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
 
     cloud_container = []
-    WeatherRecord.limit(7).order('id desc').each do |x|
+    WeatherRecord.limit(7).order('id asc').each do |x|
         cloud_container << x.cloud_cover
     end
     gon.cloud_cover_data = cloud_container.flatten
