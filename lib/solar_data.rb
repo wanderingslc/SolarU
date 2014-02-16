@@ -13,15 +13,12 @@ module SolarData
     res = Net::HTTP.get_response(uri)
     parsedResponse = JSON.parse(res.body)
     responseData = parsedResponse["production"]
-    time = parsedResponse["start_date"]
-    parsedTime = time.scan(/\d{4}-\d{2}-\d{2}/).first.to_datetime
+    unparsed_time = parsedResponse["start_date"]
+    parsedTime = Time.parse(unparsed_time.scan(/\d{4}-\d{2}-\d{2}/).first)
     x = EnergyLifetimeArray.new
     x.lifetime_data = responseData
     x.start_date = parsedTime
     x.unix_time = parsedTime.to_i
-    # x.raw_array = responseData
-    # x.parsed_array = responseData.each_with_index.map do |value, index|
-    #   [ (index + parsedTime + (index * 86400)) * 1000, value ]
     x.save
   end  
  

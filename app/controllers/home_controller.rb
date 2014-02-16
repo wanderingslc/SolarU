@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
     # @highestOutput = EnergyLifetimeArray.last.raw_array.max
     
-    gon.lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
+    gon.lifetime_unix_time = EnergyLifetimeArray.last.start_date.to_i * 1000
     gon.lifetime_data = EnergyLifetimeArray.last.lifetime_data
 
     gon.daily_unix_time = DailyProduction.last.unix_time * 1000
