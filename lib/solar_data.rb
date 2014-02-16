@@ -17,7 +17,6 @@ module SolarData
     parsedTime = Time.parse(unparsed_time.scan(/\d{4}-\d{2}-\d{2}/).first)
     x = EnergyLifetimeArray.new
     x.lifetime_data = responseData
-    x.start_date = parsedTime
     x.unix_time = parsedTime.to_i
     x.save
   end  

@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(:version => 20140204013659) do
   create_table "energy_lifetime_arrays", :force => true do |t|
     t.text     "lifetime_data"
     t.datetime "start_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "unix_time"
+    t.integer  "start_date_integer"
   end
 
   create_table "last_seven_days_arrays", :force => true do |t|
@@ -41,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20140204013659) do
     t.datetime "month"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "trailing_thirty_day_arrays", :force => true do |t|
+    t.text     "power_array"
+    t.integer  "start_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "weather_records", :force => true do |t|
