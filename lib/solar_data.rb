@@ -23,38 +23,43 @@ module SolarData
  
 # ------------- monthly graph ------------- ------------- ------------- 
 
-# what about arrays that are not older than 1 month?
 def self.split_current_data_into_months
-  start_date = EnergyLifetimeArray.last.start_date
-  first_month_days = start_date.end_of_month.day - start_date.day 
-  start_date.end_of_month.day != start_date.day ? first_month_days = start_date.end_of_month.day - start_date.day : first_month_days = 1
-  last_month = Time.now.beginning_of_month - 1.month
+  # only for systems with at least one month of complete data
+  unless EnergyLifetimeArray.last.lifetime_data.count <= Time.at(EnergyLifetimeArray.last.unix_time).end_of_month.day 
+    start_date = Time.at(EnergyLifetimeArray.last.unix_time)
+    
+    # number of days in first month  
+    start_date.end_of_month.day != start_date.day ? days_in_first_month = (start_date.end_of_month.day - start_date.day) + 1 : days_in_first_month = 1
+    
+    last_month = Time.now.beginning_of_month - 1.month
 
-  x = MonthlyRecord.new
-  x.month = start_date
-  x.power_produced = EnergyLifetimeArray.last.lifetime_data.slice(0, first_month_days)
-  x.save
+    # save the first month's data
+    x = MonthlyRecord.new
+    x.month = start_date
+    x.power_produced = EnergyLifetimeArray.last.lifetime_data.slice(0, days_in_first_month)
+    x.save
 
-  #array without that first partial month:
-  culled_array = EnergyLifetimeArray.last.lifetime_data.slice(first_month_days, EnergyLifetimeArray.last.lifetime_data.length)
+    #array without that first partial month:
+    culled_array = EnergyLifetimeArray.last.lifetime_data.slice(days_in_first_month, EnergyLifetimeArray.last.lifetime_data.length)
 
-  #number of months that need populating, this excludes the first, partial month
-  months_to_populate = (Time.now.year * 12 + Time.now.month) - (start_date.year * 12 + start_date.month)
-  i = 0
-  (months_to_populate - 1).times do |x|
-    month = start_date + (x + 1).months
-    if x == 0
-     i = 0 
+    #number of months that need populating, this excludes the first, partial month
+    months_to_populate = (Time.now.year * 12 + Time.now.month) - (start_date.year * 12 + start_date.month)
+    i = 0
+    (months_to_populate - 1).times do |x|
+      month = start_date + (x + 1).months
+      if x == 0
+       i = 0 
+      end
+      puts 'this is x: ' + x.to_s
+      puts 'this is the first i: ' + i.to_s
+      new_culled_array = culled_array.slice(i, month.end_of_month.day)
+      y = MonthlyRecord.new
+      y.month = month
+      y.power_produced = new_culled_array
+      y.save
+      i = i + month.end_of_month.day
+      puts i
     end
-    puts 'this is x: ' + x.to_s
-    puts 'this is the first i: ' + i.to_s
-    new_culled_array = culled_array.slice(i, month.end_of_month.day)
-    y = MonthlyRecord.new
-    y.month = month
-    y.power_produced = new_culled_array
-    y.save
-    i = i + month.end_of_month.day
-    puts i
   end
 end
 
