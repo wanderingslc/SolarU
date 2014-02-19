@@ -1,7 +1,6 @@
 module WeatherData
   require 'net/http'
 
-  # run once to seed the database
   def self.get_weather_data
      
     if WeatherRecord.any? == false
