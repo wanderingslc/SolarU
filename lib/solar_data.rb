@@ -63,6 +63,18 @@ def self.split_current_data_into_months
   end
 end
 
+def self.slice_lifetime_into_month(month_to_slice)
+  start_day = Time.at(EnergyLifetimeArray.last.unix_time)
+  puts "Start day: #{start_day}"
+  days_before_month = ((month_to_slice - start_day) / 86400).round
+  puts "Days before month: #{days_before_month}"
+  days_in_month = month_to_slice.end_of_month.day
+  puts "Days in Month: #{days_in_month}"
+  return EnergyLifetimeArray.last.lifetime_data.slice((days_before_month), (days_in_month))
+end
+
+
+
 
 # ---------------------- Last 7 Days -------------------------------
 def self.get_trailing_seven_days

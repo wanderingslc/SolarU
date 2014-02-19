@@ -13,9 +13,11 @@ class HomeController < ApplicationController
     # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
     # @highestOutput = EnergyLifetimeArray.last.raw_array.max
     
+    # lifetime -----------------------------------------------------------------------------
     gon.lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
     gon.lifetime_data = EnergyLifetimeArray.last.lifetime_data
 
+    # daily   -----------------------------------------------------------------------------
     gon.daily_unix_time = DailyProduction.last.unix_time * 1000
     gon.daily_data = DailyProduction.last.power_array
 
@@ -37,18 +39,21 @@ class HomeController < ApplicationController
     end
     gon.cloud_cover_data = cloud_container.reverse!.flatten
 
-    MonthlyRecord.limit(3).order('id desc').each_with_index do |month, index|
-      if index == 0
-        gon.monthly_name_one = month.month.strftime("%B") 
-        gon.monthly_data_one = month.power_produced
-      elsif index == 1
-        gon.monthly_name_two = month.month.strftime("%B") 
-        gon.monthly_data_two = month.power_produced
+    # last three months -----------------------------------------------------------------------------
+
+    3.times do |x|
+      if x == 0
+        gon.monthly_name_one = (Time.now.beginning_of_month - 3.months).strftime("%B") 
+        gon.monthly_data_one = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 3.months)
+      elsif x == 1
+        gon.monthly_name_two = (Time.now.beginning_of_month - 2.months).strftime("%B") 
+        gon.monthly_data_two = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 2.months)
       else
-        gon.monthly_name_three = month.month.strftime("%B") 
-        gon.monthly_data_three = month.power_produced            
+        gon.monthly_name_three = (Time.now.beginning_of_month - 1.months).strftime("%B") 
+        gon.monthly_data_three = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 1.months)
       end
     end
+
   end
  
   private
