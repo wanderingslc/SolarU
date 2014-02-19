@@ -2,7 +2,7 @@ module SolarData
   require 'net/http'
   def initialize 
   end  
-  
+
   @api_key = ENV["SOLAR_U_API_KEY"]
   @api_name = ENV["SOLAR_U_API_URL"]
 
@@ -15,7 +15,11 @@ module SolarData
     responseData = parsedResponse["production"]
     unparsed_time = parsedResponse["start_date"]
     parsedTime = Time.parse(unparsed_time.scan(/\d{4}-\d{2}-\d{2}/).first)
-    x = EnergyLifetimeArray.new
+    if EnergyLifetimeArray.count == 0
+      x = EnergyLifetimeArray.new 
+    else
+      x = EnergyLifetimeArray.last
+    end
     x.lifetime_data = responseData
     x.unix_time = parsedTime.to_i
     x.save

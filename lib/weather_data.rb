@@ -4,7 +4,7 @@ module WeatherData
   # run once to seed the database
   def self.get_weather_data
      
-    unless WeatherRecord.any?
+    if WeatherRecord.any? == false
       days_to_populate = 7
     else 
       last_record_time = Time.at(WeatherRecord.last.date)
