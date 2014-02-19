@@ -25,29 +25,29 @@ class HomeController < ApplicationController
     gon.temperature_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
 
     temperature_container = []
-    WeatherRecord.limit(7).order('id asc').each do |x|
-        temperature_container << x.temperature 
+    WeatherRecord.order('id desc').limit(7).each do |x|
+      temperature_container << x.temperature 
     end
-    gon.temperature_data = temperature_container.flatten
+    gon.temperature_data = temperature_container.reverse!.flatten
     gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
 
     cloud_container = []
-    WeatherRecord.limit(7).order('id asc').each do |x|
-        cloud_container << x.cloud_cover
+    WeatherRecord.order('id desc').limit(7).each do |x|
+      cloud_container << x.cloud_cover
     end
-    gon.cloud_cover_data = cloud_container.flatten
+    gon.cloud_cover_data = cloud_container.reverse!.flatten
 
     MonthlyRecord.limit(3).order('id desc').each_with_index do |month, index|
-        if index == 0
-            gon.monthly_name_one = month.month.strftime("%B") 
-            gon.monthly_data_one = month.power_produced
-        elsif index == 1
-            gon.monthly_name_two = month.month.strftime("%B") 
-            gon.monthly_data_two = month.power_produced
-        else
-            gon.monthly_name_three = month.month.strftime("%B") 
-            gon.monthly_data_three = month.power_produced            
-        end
+      if index == 0
+        gon.monthly_name_one = month.month.strftime("%B") 
+        gon.monthly_data_one = month.power_produced
+      elsif index == 1
+        gon.monthly_name_two = month.month.strftime("%B") 
+        gon.monthly_data_two = month.power_produced
+      else
+        gon.monthly_name_three = month.month.strftime("%B") 
+        gon.monthly_data_three = month.power_produced            
+      end
     end
   end
  
