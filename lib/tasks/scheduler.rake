@@ -1,10 +1,6 @@
-desc "This task is called by the Heroku scheduler add-on"
-task :update_feed => :environment do
-  puts "Updating feed..."
-  NewsFeed.update
-  puts "done."
-end
-
-task :send_reminders => :environment do
-  User.send_reminders
+desc "Get Gurrent Data"
+task :get_current_solar_data => :environment do
+  puts "Getting most recent solar data"
+  SolarData.get_current_production
+  puts "done fetching current production."
 end
