@@ -13,47 +13,33 @@ class HomeController < ApplicationController
     # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
     # @highestOutput = EnergyLifetimeArray.last.raw_array.max
     
-<<<<<<< HEAD
     # lifetime -----------------------------------------------------------------------------
     gon.lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
     gon.lifetime_data = EnergyLifetimeArray.last.lifetime_data
 
     # daily   -----------------------------------------------------------------------------
-=======
-    # lifetime data
-    gon.lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
-    gon.lifetime_data = EnergyLifetimeArray.last.lifetime_data
-    # daily data
->>>>>>> 9571ba33457c030511bf37eb104f9af2f456f1c7
     gon.daily_unix_time = DailyProduction.last.unix_time * 1000
     gon.daily_data = DailyProduction.last.power_array
 
     # last seven days -----------------------------------------------------------------------------
     gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
     gon.last_seven_day_data = LastSevenDaysArray.last.power_array
-<<<<<<< HEAD
 
-=======
     gon.temperature_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
     # temperature for the last seven days
->>>>>>> 9571ba33457c030511bf37eb104f9af2f456f1c7
     temperature_container = []
     WeatherRecord.order('id desc').limit(7).each do |x|
       temperature_container << x.temperature 
     end
     gon.temperature_data = temperature_container.reverse!.flatten
-<<<<<<< HEAD
 
-=======
     gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
     # cloud cover for the last seven days
->>>>>>> 9571ba33457c030511bf37eb104f9af2f456f1c7
     cloud_container = []
     WeatherRecord.order('id desc').limit(7).each do |x|
       cloud_container << x.cloud_cover
     end
     gon.cloud_cover_data = cloud_container.reverse!.flatten
-<<<<<<< HEAD
 
     # last three months -----------------------------------------------------------------------------
 
@@ -64,19 +50,6 @@ class HomeController < ApplicationController
       elsif x == 1
         gon.monthly_name_two = (Time.now.beginning_of_month - 2.months).strftime("%B") 
         gon.monthly_data_two = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 2.months)
-=======
-    # monthly data
-    MonthlyRecord.limit(3).order('id desc').each_with_index do |month, index|
-      if index == 0
-        gon.monthly_name_one = month.month.strftime("%B") 
-        gon.monthly_data_one = month.power_produced
-      elsif index == 1
-        gon.monthly_name_two = month.month.strftime("%B") 
-        gon.monthly_data_two = month.power_produced
->>>>>>> 9571ba33457c030511bf37eb104f9af2f456f1c7
-      else
-        gon.monthly_name_three = (Time.now.beginning_of_month - 1.months).strftime("%B") 
-        gon.monthly_data_three = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 1.months)
       end
     end
 
