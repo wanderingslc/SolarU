@@ -34,6 +34,7 @@ $(document).ready ->
         fontSize: "25px"
 
     yAxis: [
+      min: 0
       title:
         text: "Watts"
         lineColor: "#dac092"
@@ -46,6 +47,9 @@ $(document).ready ->
         style:
           color: "#FF0000"
      ,
+
+      max: 0.8
+      min: 0
       title:
         text: "Cloud Cover"
         lineColor: "#FF0DFF"
@@ -70,6 +74,7 @@ $(document).ready ->
       yAxis: 0
       type: "spline"
       min: 0
+      max: 20
       startOnTick: true
       name: "Watts Produced"
       pointInterval: 1800000
