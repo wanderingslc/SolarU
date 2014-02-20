@@ -5,13 +5,6 @@ task :lifetime => :environment do
   puts "Got All the lifetime energy!"
 end
 
-desc 'Takes the lifetime energy and splits it into months'
-task :split_months => :environment do
-  puts "Spiting the lifetime energy into months!"
-  SolarData.split_current_data_into_months
-  puts "Split the lifetime Energy into months!"
-end
-
 desc 'Gets the last 7 days'
 task :seven_days => :environment do
   puts "Getting the last seven days!"
@@ -34,6 +27,6 @@ task :weather => :environment do
 end
 
 desc 'This gets all the data'
-task :all_the_data => [:lifetime, :split_months, :seven_days, :current, :weather] do
+task :once_a_day => [:lifetime, :seven_days, :weather] do
   puts "All Done!"
 end
