@@ -27,46 +27,6 @@ module SolarData
  
 # ------------- monthly graph ------------- ------------- ------------- 
 
-def self.split_current_data_into_months
-  # only for systems with at least one month of complete data
-  unless EnergyLifetimeArray.last.lifetime_data.count <= Time.at(EnergyLifetimeArray.last.unix_time).end_of_month.day 
-    start_date = Time.at(EnergyLifetimeArray.last.unix_time)
-    
-    # number of days in first month  
-    start_date.end_of_month.day != start_date.day ? days_in_first_month = (start_date.end_of_month.day - start_date.day) + 1 : days_in_first_month = 1
-    
-    last_month = Time.now.beginning_of_month - 1.month
-
-    # save the first month's data
-    x = MonthlyRecord.new
-    x.month = start_date
-    x.power_produced = EnergyLifetimeArray.last.lifetime_data.slice(0, days_in_first_month)
-    x.save
-
-    #array without that first partial month:
-    culled_array = EnergyLifetimeArray.last.lifetime_data.slice(days_in_first_month, EnergyLifetimeArray.last.lifetime_data.length)
-
-    #number of months that need populating, this excludes the first, partial month
-    months_to_populate = (Time.now.year * 12 + Time.now.month) - (start_date.year * 12 + start_date.month)
-    i = 0
-    (months_to_populate - 1).times do |x|
-      month = start_date + (x + 1).months
-      if x == 0
-       i = 0 
-      end
-      puts 'this is x: ' + x.to_s
-      puts 'this is the first i: ' + i.to_s
-      new_culled_array = culled_array.slice(i, month.end_of_month.day)
-      y = MonthlyRecord.new
-      y.month = month
-      y.power_produced = new_culled_array
-      y.save
-      i = i + month.end_of_month.day
-      puts i
-    end
-  end
-end
-
 def self.slice_lifetime_into_month(month_to_slice)
   start_day = Time.at(EnergyLifetimeArray.last.unix_time)
   puts "Start day: #{start_day}"
@@ -76,8 +36,6 @@ def self.slice_lifetime_into_month(month_to_slice)
   puts "Days in Month: #{days_in_month}"
   return EnergyLifetimeArray.last.lifetime_data.slice((days_before_month), (days_in_month))
 end
-
-
 
 
 # ---------------------- Last 7 Days -------------------------------
@@ -105,20 +63,6 @@ end
 
 # ------------------------Current Production --------------------------
 
-# should be done once per day
-  # def self.get_current_production
-  #   uri=URI("#{@api_name}/power_today")
-  #   params = { :key => @api_key}  
-  #   uri.query = URI.encode_www_form(params)
-  #   res = Net::HTTP.get_response(uri)
-  #   parsedResponse = JSON.parse(res.body)
-  #   results = parsedResponse["production"]
-  #   dailyData = DailyProduction.new
-  #   dailyData.production_totals = results
-  #   dailyData.for_day = Time.now
-  #   dailyData.save
-  # end
-
   def self.get_current_production
     uri=URI("#{@api_name}/stats")
     params = { :key => @api_key}  
@@ -138,17 +82,6 @@ end
     dailyData.save
   end
 
-  # def self.get_new_daily_values
-  #   uri=URI("#{@api_name}/stats")
-  #   params = { :key => @api_key}  
-  #   uri.query = URI.encode_www_form(params)
-  #   res = Net::HTTP.get_response(uri)
-  #   parsedResponse = JSON.parse(res.body)
-  #   results = parsedResponse["production"]
-  #   difference = results.length - DailyProduction.last.production_totals.length
-  #   # should it also update it?
-  #   return results[-difference..results.length]
-  # end
 end 
 
 

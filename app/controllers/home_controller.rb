@@ -50,6 +50,9 @@ class HomeController < ApplicationController
       elsif x == 1
         gon.monthly_name_two = (Time.now.beginning_of_month - 2.months).strftime("%B") 
         gon.monthly_data_two = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 2.months)
+      else
+        gon.monthly_name_three = (Time.now.beginning_of_month - 1.months).strftime("%B")   
+        gon.monthly_data_three = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 1.months)
       end
     end
 
