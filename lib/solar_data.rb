@@ -75,7 +75,11 @@ end
     parsedResponse["intervals"].each do |pow|
       pow_array << pow["powr"]
     end
-    dailyData = DailyProduction.new
+    if DailyProduction.count == 0
+      dailyData = DailyProduction.new 
+    else
+      dailyData = DailyProduction.last
+    end
     dailyData.power_array = pow_array
     dailyData.start_time = parsedTime
     dailyData.unix_time = parsedTime.to_i

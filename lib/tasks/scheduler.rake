@@ -3,14 +3,14 @@ require 'weather_data'
 
 
 # --------------------------  current  -----
-desc "Get Gurrent Data (Task 1)"
+desc "Get Current Data (Task 1)"
 task :get_current_solar_data_one => :environment do
   puts "Getting most recent solar data (task one)"
   SolarData.get_current_production
   puts "done fetching current production (task 1)."
 end
 
-desc "Get Gurrent Data (Task 2)"
+desc "Get Current Data (Task 2)"
 task :get_current_solar_data_two => :environment do
   puts "Getting most recent solar data (task 2)"
   SolarData.get_current_production
