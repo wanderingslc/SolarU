@@ -24,15 +24,13 @@ module WeatherData
         begin
           res = Net::HTTP.get_response(uri)
           parsedResponse = JSON.parse(res.body)
-        # rescue JSON::ParserError
-        # rescue Net::ReadTimeout
         rescue JSON::ParserError => e
           puts e.message
-          puts "Error! Retrying"
+          puts "Error JSON Error! Retrying!"
           retry
         rescue Net::ReadTimeout => e
           puts e.message
-          puts "Error! Retrying"
+          puts "Error Read Timeout! Retrying!"
           retry
         end
         cloud_container << parsedResponse["currently"]["cloudCover"]

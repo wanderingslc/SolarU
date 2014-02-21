@@ -35,6 +35,7 @@ $(document).ready ->
 
     yAxis: [
       min: 0
+      max: 50000
       title:
         text: "Watts"
         lineColor: "#dac092"
@@ -73,8 +74,6 @@ $(document).ready ->
     series: [ 
       yAxis: 0
       type: "spline"
-      min: 0
-      max: 20
       startOnTick: true
       name: "Watts Produced"
       pointInterval: 1800000
@@ -90,8 +89,6 @@ $(document).ready ->
      ,
       yAxis: 2
       type: "line"
-      min: 0
-      max: 1
       name: "Cloud Cover"
       pointInterval: 1800000
       pointStart: gon.last_seven_day_time
