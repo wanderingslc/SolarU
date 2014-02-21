@@ -27,6 +27,6 @@ task :weather => :environment do
 end
 
 desc 'This gets all the data'
-task :all_the_data => [:lifetime, :split_months, :seven_days, :current, :weather] do
+task :once_a_day => [:lifetime, :seven_days, :weather] do
   puts "All Done!"
 end
