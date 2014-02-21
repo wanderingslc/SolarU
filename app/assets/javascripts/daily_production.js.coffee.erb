@@ -11,9 +11,12 @@ $(document).ready ->
       animation: Highcharts.svg
       style:
         fontSize: "2em"
-
-    
-    
+       events: 
+          load: ->
+            setInterval ->
+              redraw: ->
+                alert 'The chart was just redrawn'
+            , 300000
     title:
       text: "Energy Produced today, by the Hour"
       style:
@@ -63,3 +66,4 @@ $(document).ready ->
       data: gon.daily_data
     ]
   )
+
