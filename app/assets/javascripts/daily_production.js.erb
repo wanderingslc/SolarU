@@ -1,0 +1,96 @@
+
+
+
+$(document).ready(function(){
+
+
+  gon.watch('daily_data', {
+      interval: 300000
+    }, reload_daily_data);
+
+  function reload_daily_data(){
+    console.log('data reloaded, array length: ' + window.gon['daily_data'].length)
+  };
+
+  var daily_production = new Highcharts.Chart({
+    chart: {
+      height: '200',
+      borderRadius: 0,
+      renderTo: "daily_production",
+      type: 'areaspline',
+      backgroundColor: gon.chart_background,
+      plotBackgroundColor: null,
+      animation: Highcharts.svg,
+      events: {
+        load: function() {
+          setInterval(function(){
+          daily_production.series[0].setData(gon.daily_data);
+          console.log('chart redrawn');
+          }, 300000);
+        }
+      },
+      title: {
+        text: "Energy Produced today, by the Hour",
+        style: {
+          color: '#cc0000',
+          fontWeight: 'bold',
+          fontSize: '25px',
+          fontFamily: '\'orbitron-light\', sans-serif'
+        }
+      },
+      legend: {
+        enabled: false
+      }
+    },        
+    xAxis: {
+      type: "datetime",
+      tickColor: '#dac092',
+      labels: {
+        style: {
+          color: '#cc0000'
+        }
+      }
+    },
+    yAxis: {
+      title: {
+        text: "Watt-Hours", 
+        style: {
+          color: '#cc0000'
+        }
+      },
+            labels: {
+        style: {
+          color: '#cc0000'
+        }
+      }
+    },
+    plotOptions: {
+      series: {
+        fillColor: {
+          linearGradient: [0,0,0,300],
+          stops: [
+            [0, '#00FF64'],
+            [1, 'rgba(0, 20, 10, 0.7)']
+          ]
+        },
+        shadow: true,
+        offsetX: "3px",
+        offsetY:"3px",
+        opacity:"0.6",
+        lineColor: '#00FF64',
+        marker: {
+          enabled: false,
+        }
+      }
+    },
+    series: [
+      { 
+        name: "Today's Production",
+        pointInterval: 300000,
+        pointStart: gon.daily_unix_time,
+        data: gon.daily_data
+      } 
+    ]       
+  });
+}); 
+

@@ -23,6 +23,7 @@ module SolarData
     x.lifetime_data = responseData
     x.unix_time = parsedTime.to_i
     x.save
+    gon.daily_data.reload 
   end  
  
 # ------------- monthly graph ------------- ------------- ------------- 

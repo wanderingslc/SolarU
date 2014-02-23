@@ -16,6 +16,7 @@ desc 'Gets the daily production'
 task :current => :environment do
   puts "Getting the current production!"
   SolarData.get_current_production
+  
   puts "Got all the Current production!"
 end
 
