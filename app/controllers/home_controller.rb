@@ -1,3 +1,4 @@
+
 class HomeController < ApplicationController
   
   # before_filter :check_data, :only => [:index]
