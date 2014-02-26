@@ -20,6 +20,8 @@ class HomeController < ApplicationController
     # daily   -----------------------------------------------------------------------------
     gon.watch.daily_unix_time = DailyProduction.last.unix_time * 1000
     gon.watch.daily_data = DailyProduction.last.power_array
+    @daily_data = DailyProduction.last.power_array
+    @daily_time = DailyProduction.last.unix_time * 1000
 
     # last seven days -----------------------------------------------------------------------------
     gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000

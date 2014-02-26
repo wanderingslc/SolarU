@@ -3,14 +3,18 @@
 
 $(document).ready(function(){
 
+  setInterval(function(){
+    $.get('/current_data.json').success(function(data){
+      $('#daily_production').data("daily-data", data);
+      console.log('retrieving new data...')
+    });
+  }, 300000);
+  
 
-  gon.watch('daily_data', {
-      interval: 300000
-    }, reload_daily_data);
-
-  function reload_daily_data(){
-    console.log('data reloaded, array length: ' + window.gon['daily_data'].length)
-  };
+    var daily_data = $('#daily_production').data("daily-data").split(" ");
+    var daily_time = $('#daily_production').data("daily-time");
+    for(var i=0; i<daily_data.length; i++) { daily_data[i] = parseInt(daily_data[i], 10); }    
+  
 
   var daily_production = new Highcharts.Chart({
     chart: {
@@ -20,11 +24,14 @@ $(document).ready(function(){
       type: 'areaspline',
       backgroundColor: gon.chart_background,
       plotBackgroundColor: null,
-      animation: Highcharts.svg,
+      animation: {
+        easing: "linear",
+        duration: "3000"
+      },
       events: {
         load: function() {
           setInterval(function(){
-          daily_production.series[0].setData(gon.daily_data);
+          daily_production.series[0].setData($('#daily_production').data("daily-data"));
           console.log('chart redrawn');
           }, 300000);
         }
@@ -87,8 +94,12 @@ $(document).ready(function(){
       { 
         name: "Today's Production",
         pointInterval: 300000,
-        pointStart: gon.daily_unix_time,
-        data: gon.daily_data
+        pointStart: daily_time,
+        data: daily_data,
+        animation: {
+          easing: "linear",
+          duration: "3000"
+        }
       } 
     ]       
   });

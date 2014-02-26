@@ -1,0 +1,2 @@
+module CurrentDataHelper
+end

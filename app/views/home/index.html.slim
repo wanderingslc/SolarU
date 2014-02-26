@@ -2,14 +2,7 @@
   .top
     .top-right
       #daily_production_row
-        p#daily_production
-
-  / .center
-  /   .center-left
-  /     p Center left
-  /   .center-right
-  /     p Center Right  
-
+        =content_tag :div, nil, :id=> "daily_production", :"data-daily-data"=> @daily_data, :"data-daily-time"=>@daily_time
   .bottom
     .bottom-row
       #power_all_time_row
