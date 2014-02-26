@@ -13,6 +13,9 @@
 
 #monthly_data  
 
-#counter_all_time
-  p Money saved by this array:
-  input name="counter-value" type="hidden" value=@energySavedAllTime
+
+=content_tag :div, nil, :id=> "counter_all_time", :class=>"flip-counter", :"data-total-power"=> @total_output
+
+/ #counter_all_time
+/   p Money saved by this array:
+/   input name="counter-value" type="hidden" value=@energySavedAllTime
