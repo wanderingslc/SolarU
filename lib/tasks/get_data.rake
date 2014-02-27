@@ -12,13 +12,23 @@ task :seven_days => :environment do
   puts "Got the last seven days!"
 end
 
-desc 'Gets the daily production'
-task :current => :environment do
-  puts "Getting the current production!"
+
+desc 'Gets the daily production -- first'
+task :current_one => :environment do
+  puts "Getting the current production (first)!"
   SolarData.get_current_production
   DailyProduction.last.reload
   puts "Got all the Current production!"
 end
+
+desc 'gets the daily production -- second'
+task :current_two => :environment do
+  puts "Getting the current production (second)!"
+  SolarData.get_current_production
+  DailyProduction.last.reload
+  puts "Got all the Current production!"
+end
+
 
 desc 'Gets all the weather data'
 task :weather => :environment do
