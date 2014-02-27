@@ -3,13 +3,10 @@ class HomeController < ApplicationController
   # before_filter :check_data, :only => [:index]
 
   def index
-    # @energyLifetimeData = EnergyLifetimeArray.last.lifetime_data
-    # @energySavedAllTime = ((EnergyLifetimeArray.last.lifetime_data.reduce(:+) / 1000) * 8.69) / 100
-    # @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 8.69) / 100
-    # the above figure comes from http://www.eia.gov/state/print.cfm?sid=UT
-    # @energyMonthlyData = SolarData.retrieve_monthly_data
-    # @energyWeeklyData = SolarData.retrieve_weekly_data
-    # @totalOutput = EnergyLifetimeArray.last.raw_array.reduce(:+)
+    @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 7.74) / 100
+    # the above figure comes from http://www.eia.gov/electricity/monthly/epm_table_grapher.cfm?t=epmt_5_6_a
+
+
     # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
     # @highestOutput = EnergyLifetimeArray.last.raw_array.max
     
@@ -24,7 +21,7 @@ class HomeController < ApplicationController
     @daily_time = DailyProduction.last.unix_time * 1000
 
     # money saved -----------------------------------------------------------------------------
-    @total_output = EnergyLifetimeArray.last.lifetime_data.reduce(:+)
+    @total_output = (((EnergyLifetimeArray.last.lifetime_data.reduce(:+).to_f / 1000) * 7.74) / 100).round()
 
     # last seven days -----------------------------------------------------------------------------
     gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
