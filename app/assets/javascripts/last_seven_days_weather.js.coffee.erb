@@ -2,11 +2,11 @@ $(document).ready ->
   new Highcharts.Chart(
     chart:
       borderRadius: 0
-      width: $(".bottom-row").width()
-      # height: ($(window).height() * (2 / 5))
-      height: $(".bottom-row").height()
+      # width: $(".bottom-row").width()
+      height: ($('body').height() * (1 / 2))
+      # height: $("body").height()
       renderTo: "power_and_weather"
-      backgroundColor: "#C3C9C9"
+      backgroundColor: "#fff"
       plotBackgroundColor: null
       style:
         color: "#990000"
@@ -35,7 +35,7 @@ $(document).ready ->
 
     yAxis: [
       min: 0
-      max: 50000
+      max: 70000
       title:
         text: "Watts"
         lineColor: "#dac092"
@@ -49,7 +49,7 @@ $(document).ready ->
           color: "#FF0000"
      ,
 
-      max: 0.8
+      max: 0.9
       min: 0
       title:
         text: "Cloud Cover"

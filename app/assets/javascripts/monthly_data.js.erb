@@ -3,9 +3,10 @@ $(document).ready(function(){
  new Highcharts.Chart({
     chart: {
       borderRadius: 0,
+      height: ($('body').height() * (1 / 2)),
       renderTo: "monthly_data",
       type: 'areaspline',
-      backgroundColor: '#C3C9C9',
+      backgroundColor: '#fff',
       plotBackgroundColor: null
     },
 

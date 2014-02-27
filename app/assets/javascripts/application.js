@@ -19,3 +19,6 @@
 //= require last_seven_days_weather
 //= require monthly_data
 
+
+
+  

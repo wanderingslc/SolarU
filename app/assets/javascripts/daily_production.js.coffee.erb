@@ -1,12 +1,16 @@
 $(document).ready -> 
+  renewDailyData = (count) ->
+  
+
   new Highcharts.Chart(
     chart:
       borderRadius: 0
-      height: $(".top-right").height() 
-      width: $(".top-right").width()
+      # height: $("body").height() 
+      height: ($(window).height() * (1 / 2))
+      # width: $(".top-right").width()
       renderTo: "daily_production"
       type: "areaspline"
-      backgroundColor: "#C3C9C9"
+      backgroundColor: "#fff"
       plotBackgroundColor: null
       animation: Highcharts.svg
       style:

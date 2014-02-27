@@ -2,11 +2,11 @@ $(document).ready ->
   new Highcharts.Chart(
     chart:
       borderRadius: 0
-      width: $(".bottom-row").width()
-      # height: ($(window).height() * (2 / 5))
-      height: $(".bottom-row").height()
+      # width: $(".bottom-row").width()
+      height: ($(window).height() * (1 / 2))
+      # height: $(".bottom-row").height()
       renderTo: "power_all_time"
-      backgroundColor: "#C3C9C9"
+      backgroundColor: "#fff"
       plotBackgroundColor: null
       type: "areaspline"
       style:
