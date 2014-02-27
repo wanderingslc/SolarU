@@ -2,17 +2,13 @@ doctype
 html
   head
     title SolarU
-    = include_gon(watch: true)
-    = stylesheet_link_tag    "application", :media => "all"
+    = include_gon
+    = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   body
-    / header
-    /   p The header could be used to display notifications?
-      
-    == yield
+    header
+    ==yield
 
-    / footer
-    /   p The Footer could be used also to display information
 
 
