@@ -1,4 +1,4 @@
 SolarU::Application.routes.draw do
-  resource :current_data
+  get "requests/current"
   root :to => "home#index" 
 end

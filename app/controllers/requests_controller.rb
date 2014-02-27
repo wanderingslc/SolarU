@@ -1,6 +1,6 @@
-class CurrentDataController < ApplicationController
-
-  def show
+class RequestsController < ApplicationController
+  
+  def current
     @current_data = DailyProduction.last.power_array
 
     respond_to do |format|
@@ -8,5 +8,6 @@ class CurrentDataController < ApplicationController
       format.json { render :json => @current_data }
     end
   end
+
 
 end
