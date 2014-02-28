@@ -38,7 +38,6 @@ $(document).ready ->
                   console.log "no new data, array length: " + $("#daily_production").data("daily-data").length
 
           ), 2000
-
       title:
         text: "Energy Produced today, by the Hour"
         style:
@@ -46,7 +45,6 @@ $(document).ready ->
           fontWeight: "bold"
           fontSize: "25px"
           fontFamily: "'orbitron-light', sans-serif"
-
       legend:
         enabled: false
 
@@ -72,7 +70,6 @@ $(document).ready ->
         fillColor:
           linearGradient: [ 0, 0, 0, 300 ]
           stops: [ [ 0, "#00FF64" ], [ 1, "rgba(0, 20, 10, 0.7)" ] ]
-
         shadow: true
         offsetX: "3px"
         offsetY: "3px"
@@ -80,7 +77,9 @@ $(document).ready ->
         lineColor: "#00FF64"
         marker:
           enabled: false
-
+    navigation:
+      buttonOptions:
+        enabled: false
     series: [
       name: "Today's Production"
       pointInterval: 300000

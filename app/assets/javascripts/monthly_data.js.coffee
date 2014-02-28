@@ -47,14 +47,22 @@ $(document).ready ->
         marker:
           enabled: false
 
+    navigation:
+      buttonOptions:
+        enabled: false
+
     series: [
-      name: gon.monthly_name_one
-      data: gon.monthly_data_one
-    ,
-      name: gon.monthly_name_two
-      data: gon.monthly_data_two
-    ,
-      name: gon.monthly_name_three
-      data: gon.monthly_data_three
-     ]
+      {
+        name: gon.monthly_name_one
+        data: gon.monthly_data_one
+      }
+      {
+        name: gon.monthly_name_two
+        data: gon.monthly_data_two
+      }
+      {
+        name: gon.monthly_name_three
+        data: gon.monthly_data_three
+      }
+    ]
   )

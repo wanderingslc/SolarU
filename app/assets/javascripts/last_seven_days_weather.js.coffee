@@ -68,6 +68,10 @@ $(document).ready ->
         marker:
           enabled: false
 
+    navigation:
+      buttonOptions:
+        enabled: false
+
     series: [ 
       yAxis: 0
       type: "spline"

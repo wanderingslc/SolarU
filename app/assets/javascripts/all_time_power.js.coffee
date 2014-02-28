@@ -59,6 +59,10 @@ $(document).ready ->
         lineColor: "#00FF64"
         marker:
           enabled: false
+          
+    navigation:
+      buttonOptions:
+        enabled: false
 
     series: [
       name: "Watts Produced"
