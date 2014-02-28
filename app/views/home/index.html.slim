@@ -1,19 +1,29 @@
-.container
-  .top
-    .top-right
-      #daily_production_row
-        =content_tag :div, nil, :id=> "daily_production", :"data-daily-data"=> @daily_data, :"data-daily-time"=>@daily_time
-  .bottom
-    .bottom-row
-      #power_all_time_row
-        p#power_all_time
+/ .container
+/   .top
+/     .top-right
+/       #daily_production_row
+        
+/   .bottom
+/     .bottom-row
+/       #power_all_time_row
+/         p
 
-  #power_and_weather
-    p this is the power and weather 
+/   #power_and_weather
+/     p this is the power and weather 
 
-  #monthly_data  
-
-
+/   #monthly_data  
+.row
+  .span6
+    =content_tag :div, nil, :id=> "daily_production", :"data-daily-data"=> @daily_data, :"data-daily-time"=>@daily_time
+  .span6
+    #power_all_time
+.row
+  .span6
+    #power_and_weather
+  .span6
+    #monthly_data
+.row
+  .span6
   =content_tag :div, nil, :id=> "counter_all_time", :class=>"flip-counter", :"data-total-power"=> @total_output
 
 
