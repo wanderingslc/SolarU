@@ -29,18 +29,24 @@ $(document).ready(function(){
           setInterval(function(){
             $.get('/requests/current.json').success(function(response){
               if (jQuery.type($('#daily_production').data("daily-data")) == "string"){
-
-                
-              }
-              if (response.length > $('#daily_production').data("daily-data").split(" ").length) {
+                if (response.length > $('#daily_production').data("daily-data").split(" ").length) {
                 $('#daily_production').data("daily-data", response);
                 daily_production.series[0].setData($('#daily_production').data("daily-data"));
                 console.log('chart redrawn');
-              } else {
-                console.log('no new data, array length: ' + $('#daily_production').data("daily-data").length);
+                }else{
+                  console.log('no new data, array length: ' + $('#daily_production').data("daily-data").split(" ")length);
+                }
+              }else{
+                if (response.length > $('#daily_production').data("daily-data").length) {
+                  $('#daily_production').data("daily-data", response);
+                  daily_production.series[0].setData($('#daily_production').data("daily-data"));
+                  console.log('chart redrawn');
+                } else {
+                  console.log('no new data, array length: ' + $('#daily_production').data("daily-data").length);
+                }
               }
             })
-          }, 200000);
+          }, 2000);
         }
       },
       title: {
