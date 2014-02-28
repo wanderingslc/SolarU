@@ -8,7 +8,7 @@ $(document).ready ->
   daily_time = $("#daily_production").data("daily-time")
   daily_production = new Highcharts.Chart(
     chart:
-      height: "200"
+      height: ($(window).height() * (1 / 2))
       borderRadius: 0
       renderTo: "daily_production"
       type: "areaspline"
@@ -36,19 +36,15 @@ $(document).ready ->
                   console.log "chart redrawn"
                 else
                   console.log "no new data, array length: " + $("#daily_production").data("daily-data").length
-              return
 
-            return
-          ), 200000
-          return
-
+          ), 2000
       title:
         text: "Energy Produced today, by the Hour"
         style:
           color: "#cc0000"
           fontWeight: "bold"
           fontSize: "25px"
-
+          fontFamily: "'orbitron-light', sans-serif"
       legend:
         enabled: false
 
@@ -72,23 +68,8 @@ $(document).ready ->
     plotOptions:
       series:
         fillColor:
-          linearGradient: [
-            0
-            0
-            0
-            300
-          ]
-          stops: [
-            [
-              0
-              "#00FF64"
-            ]
-            [
-              1
-              "rgba(0, 20, 10, 0.7)"
-            ]
-          ]
-
+          linearGradient: [ 0, 0, 0, 300 ]
+          stops: [ [ 0, "#00FF64" ], [ 1, "rgba(0, 20, 10, 0.7)" ] ]
         shadow: true
         offsetX: "3px"
         offsetY: "3px"
@@ -96,11 +77,9 @@ $(document).ready ->
         lineColor: "#00FF64"
         marker:
           enabled: false
-
     navigation:
       buttonOptions:
         enabled: false
-
     series: [
       name: "Today's Production"
       pointInterval: 300000
@@ -109,6 +88,5 @@ $(document).ready ->
       animation:
         easing: "linear"
         duration: "3000"
-    ]
+     ]
   )
-  return
