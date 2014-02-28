@@ -1,15 +1,7 @@
 $(document).ready(function(){
 
-  // setInterval(function(){
-  //   $.get('/requests/current.json').success(function(data){
-  //     $('#daily_production').data("daily-data", data);
-  //     console.log('retrieving new data...')
-  //   });
-  // }, 200000);
-  
-
   var daily_data = $('#daily_production').data("daily-data").split(" ");
-  for(var i=0; i<daily_data.length; i++) { daily_data[i] = parseInt(daily_data[i], 10); };    
+  for(var i=0; i<daily_data.length; i++) { daily_data[i] = parseInt(daily_data[i], 10); }  
   var daily_time = $('#daily_production').data("daily-time");
 
   var daily_production = new Highcharts.Chart({
@@ -18,7 +10,7 @@ $(document).ready(function(){
       borderRadius: 0,
       renderTo: "daily_production",
       type: 'areaspline',
-      backgroundColor: gon.chart_background,
+      backgroundColor: "#fff",
       plotBackgroundColor: null,
       animation: {
         easing: "linear",
@@ -34,7 +26,7 @@ $(document).ready(function(){
                 daily_production.series[0].setData($('#daily_production').data("daily-data"));
                 console.log('chart redrawn');
                 }else{
-                  console.log('no new data, array length: ' + $('#daily_production').data("daily-data").split(" ")length);
+                  console.log('no new data, array length: ' + $('#daily_production').data("daily-data").split(" ").length);
                 }
               }else{
                 if (response.length > $('#daily_production').data("daily-data").length) {
@@ -46,7 +38,7 @@ $(document).ready(function(){
                 }
               }
             })
-          }, 2000);
+          }, 200000);
         }
       },
       title: {
