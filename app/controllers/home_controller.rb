@@ -4,9 +4,7 @@ class HomeController < ApplicationController
   # before_filter :check_data, :only => [:index]
 
   def index
-    @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 7.74) / 100
-    # the above figure comes from http://www.eia.gov/electricity/monthly/epm_table_grapher.cfm?t=epmt_5_6_a
-
+    # @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 7.74) / 100
 
     # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
     # @highestOutput = EnergyLifetimeArray.last.raw_array.max
@@ -16,13 +14,12 @@ class HomeController < ApplicationController
     gon.lifetime_data = EnergyLifetimeArray.last.lifetime_data
 
     # daily   -----------------------------------------------------------------------------
-    # gon.watch.daily_unix_time = DailyProduction.last.unix_time * 1000
-    # gon.watch.daily_data = DailyProduction.last.power_array
     @daily_data = DailyProduction.last.power_array
     @daily_time = DailyProduction.last.unix_time * 1000
 
     # money saved -----------------------------------------------------------------------------
     @total_output = (((EnergyLifetimeArray.last.lifetime_data.reduce(:+).to_f / 1000) * 7.74) / 100).round()
+    # the above figure comes from http://www.eia.gov/electricity/monthly/epm_table_grapher.cfm?t=epmt_5_6_a
 
     # last seven days -----------------------------------------------------------------------------
     gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
