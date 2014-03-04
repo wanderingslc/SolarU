@@ -1,4 +1,23 @@
 $(document).ready ->
+
+  monthly_name_one = $('#monthly_data').data('monthly-name-one')
+  monthly_data_one = $('#monthly_data').data('monthly-data-one').split(" ")
+  monthly_name_two = $('#monthly_data').data('monthly-name-two')
+  monthly_data_two = $('#monthly_data').data('monthly-data-two').split(" ")
+  monthly_name_three = $('#monthly_data').data('monthly-name-three')
+  monthly_data_three = $('#monthly_data').data('monthly-data-three').split(" ")
+
+
+  turn_into_array = (data_string) ->
+    i = 0
+    while i < data_string.length
+      data_string[i] = parseFloat(data_string[i], 10)
+      i++
+
+  turn_into_array(monthly_data_one)
+  turn_into_array(monthly_data_two)
+  turn_into_array(monthly_data_three)
+
   new Highcharts.Chart(
     chart:
       borderRadius: 0
@@ -53,16 +72,16 @@ $(document).ready ->
 
     series: [
       {
-        name: gon.monthly_name_one
-        data: gon.monthly_data_one
+        name: monthly_name_one
+        data: monthly_data_one
       }
       {
-        name: gon.monthly_name_two
-        data: gon.monthly_data_two
+        name: monthly_name_two
+        data: monthly_data_two
       }
       {
-        name: gon.monthly_name_three
-        data: gon.monthly_data_three
+        name: monthly_name_three
+        data: monthly_data_three
       }
     ]
   )

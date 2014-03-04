@@ -1,4 +1,20 @@
 $(document).ready -> 
+
+  last_seven_day_time = $("#power_and_weather").data("seven-day-time")
+  last_seven_day_data = $("#power_and_weather").data("seven-day-data").split(" ")
+  temperature_data = $("#power_and_weather").data("temperature-data").split(" ")
+  cloud_cover_data = $("#power_and_weather").data("cloud-data").split(" ")
+
+  turn_into_array = (data_string) ->
+    i = 0
+    while i < data_string.length
+      data_string[i] = parseFloat(data_string[i], 10)
+      i++
+
+  turn_into_array(last_seven_day_data)
+  turn_into_array(temperature_data)
+  turn_into_array(cloud_cover_data)
+
   new Highcharts.Chart(
     chart:
       borderRadius: 0
@@ -78,21 +94,21 @@ $(document).ready ->
       startOnTick: true
       name: "Watts Produced"
       pointInterval: 1800000
-      pointStart: gon.last_seven_day_time
-      data: gon.last_seven_day_data
+      pointStart: last_seven_day_time
+      data: last_seven_day_data
      ,
       yAxis: 1
       type: "line"
       name: "Temperature"
       pointInterval: 1800000
-      pointStart: gon.last_seven_day_time
-      data: gon.temperature_data, dashStyle: 'shortdot'
+      pointStart: last_seven_day_time
+      data: temperature_data, dashStyle: 'shortdot'
      ,
       yAxis: 2
       type: "line"
       name: "Cloud Cover"
       pointInterval: 1800000
-      pointStart: gon.last_seven_day_time
-      data: gon.cloud_cover_data, dashStyle: 'shortdash'
+      pointStart: last_seven_day_time
+      data: cloud_cover_data
     ]
   )

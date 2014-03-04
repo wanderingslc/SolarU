@@ -1,4 +1,16 @@
 $(document).ready -> 
+
+  lifetime_unix_time = $("#power_all_time").data("lifetime-time") 
+  lifetime_data = $("#power_all_time").data("all-time-data").split(" ")
+
+  turn_into_array = (data_string) ->
+    i = 0
+    while i < data_string.length
+      data_string[i] = parseFloat(data_string[i], 10)
+      i++
+      
+  turn_into_array(lifetime_data)
+
   new Highcharts.Chart(
     chart:
       borderRadius: 0
@@ -67,7 +79,7 @@ $(document).ready ->
     series: [
       name: "Watts Produced"
       pointInterval: 86400000
-      pointStart: gon.lifetime_unix_time 
-      data: gon.lifetime_data
+      pointStart: lifetime_unix_time 
+      data: lifetime_data
     ]
   )

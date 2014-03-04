@@ -9,52 +9,48 @@ class HomeController < ApplicationController
     # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
     # @highestOutput = EnergyLifetimeArray.last.raw_array.max
     
-    # lifetime -----------------------------------------------------------------------------
-    gon.lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
-    gon.lifetime_data = EnergyLifetimeArray.last.lifetime_data
+# lifetime --------------------------------------------------------------------------------------
+    @lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
+    @lifetime_data = EnergyLifetimeArray.last.lifetime_data
 
-    # daily   -----------------------------------------------------------------------------
+# daily   --------------------------------------------------------------------------------------
     @daily_data = DailyProduction.last.power_array
     @daily_time = DailyProduction.last.unix_time * 1000
 
-    # money saved -----------------------------------------------------------------------------
+# money saved --------------------------------------------------------------------------------------
     @total_output = (((EnergyLifetimeArray.last.lifetime_data.reduce(:+).to_f / 1000) * 7.74) / 100).round()
     # the above figure comes from http://www.eia.gov/electricity/monthly/epm_table_grapher.cfm?t=epmt_5_6_a
 
-    # last seven days -----------------------------------------------------------------------------
-    gon.last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
-    gon.last_seven_day_data = LastSevenDaysArray.last.power_array
+# last seven days --------------------------------------------------------------------------------
+    @last_seven_day_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
+    @last_seven_day_data = LastSevenDaysArray.last.power_array
 
-    # temperature -----------------------------------------------------------------------
-    gon.temperature_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
-
+# temperature -----------------------------------------------------------------------------------
     temperature_container = []
     WeatherRecord.order('id desc').limit(7).each do |x|
       temperature_container << x.temperature 
     end
-    gon.temperature_data = temperature_container.reverse!.flatten
+    @temperature_data = temperature_container.reverse!.flatten
 
-    # cloud cover -----------------------------------------------------------------------
-    gon.cloud_cover_time = (Time.now.beginning_of_day - 7.days).to_i * 1000
-    
+# cloud cover ----------------------------------------------------------------------------------- 
     cloud_container = []
     WeatherRecord.order('id desc').limit(7).each do |x|
       cloud_container << x.cloud_cover
     end
-    gon.cloud_cover_data = cloud_container.reverse!.flatten
+    @cloud_cover_data = cloud_container.reverse!.flatten
 
-    # last three months -----------------------------------------------------------------------------
+# last three months -----------------------------------------------------------------------------
 
     3.times do |x|
       if x == 0
-        gon.monthly_name_one = (Time.now.beginning_of_month - 3.months).strftime("%B") 
-        gon.monthly_data_one = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 3.months)
+        @monthly_name_one = (Time.now.beginning_of_month - 3.months).strftime("%B") 
+        @monthly_data_one = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 3.months)
       elsif x == 1
-        gon.monthly_name_two = (Time.now.beginning_of_month - 2.months).strftime("%B") 
-        gon.monthly_data_two = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 2.months)
+        @monthly_name_two = (Time.now.beginning_of_month - 2.months).strftime("%B") 
+        @monthly_data_two = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 2.months)
       else
-        gon.monthly_name_three = (Time.now.beginning_of_month - 1.months).strftime("%B")   
-        gon.monthly_data_three = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 1.months)
+        @monthly_name_three = (Time.now.beginning_of_month - 1.months).strftime("%B")   
+        @monthly_data_three = SolarData.slice_lifetime_into_month(Time.now.beginning_of_month - 1.months)
       end
     end
   end

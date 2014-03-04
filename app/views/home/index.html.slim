@@ -16,12 +16,15 @@
   .span6
     =content_tag :div, nil, :id=> "daily_production", :"data-daily-data"=> @daily_data, :"data-daily-time"=>@daily_time
   .span6
-    #power_all_time
+    =content_tag :div, nil, :id=> "power_all_time", :"data-all-time-data"=> @lifetime_data, :"data-lifetime-time"=>@lifetime_unix_time
+
+    
 .row
   .span6
+    =content_tag :div, nil, :id=> "power_and_weather", :"data-seven-day-time"=>@last_seven_day_time, :"data-seven-day-data"=>@last_seven_day_data, :"data-temperature-data"=>@temperature_data, :"data-cloud-data"=>@cloud_cover_data
     #power_and_weather
   .span6
-    #monthly_data
+    =content_tag :div, nil, :id=> "monthly_data", :"data-monthly-name-one"=> @monthly_name_one, :"data-monthly-name-two"=> @monthly_name_two, :"data-monthly-name-three"=> @monthly_name_three, :"data-monthly-data-one"=> @monthly_data_one, :"data-monthly-data-two"=> @monthly_data_two, :"data-monthly-data-three"=> @monthly_data_three
 .row
   .span6
   =content_tag :div, nil, :id=> "counter_all_time", :class=>"flip-counter", :"data-total-power"=> @total_output

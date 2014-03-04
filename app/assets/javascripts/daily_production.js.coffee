@@ -36,8 +36,7 @@ $(document).ready ->
                   console.log "chart redrawn"
                 else
                   console.log "no new data, array length: " + $("#daily_production").data("daily-data").length
-
-          ), 2000
+          ), 200000
       title:
         text: "Energy Produced today, by the Hour"
         style:
