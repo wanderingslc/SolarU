@@ -1,7 +1,10 @@
 $(document).ready ->
+  $.cookie('last_loaded', new Date())
+  
+  cookie_time = new Date($.cookie('last_loaded')).getDay()
+
   daily_data = $("#daily_production").data("daily-data").split(" ")
   i = 0
-
   while i < daily_data.length
     daily_data[i] = parseInt(daily_data[i], 10)
     i++
@@ -36,6 +39,10 @@ $(document).ready ->
                   console.log "chart redrawn"
                 else
                   console.log "no new data, array length: " + $("#daily_production").data("daily-data").length
+                while cookie_time != (new Date().getDay()) 
+                  $.removeCookie('last_loaded')
+                  window.refresh()
+                  console.log('window reloaded')
           ), 200000
       title:
         text: "Energy Produced today, by the Hour"

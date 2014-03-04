@@ -73,9 +73,6 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     formatador (0.2.4)
-    gon (5.0.4)
-      actionpack (>= 2.3.0)
-      json
     guard (2.5.1)
       formatador (>= 0.2.4)
       listen (~> 2.6)
@@ -227,7 +224,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails
   figaro
-  gon
   guard-bundler
   guard-livereload
   guard-minitest

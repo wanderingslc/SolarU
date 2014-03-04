@@ -20,6 +20,7 @@
 //= require monthly_data
 //= require flipcounter
 //= require money_saved_counter
+//= require jquery.cookie
 
 
 
