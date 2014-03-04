@@ -1,7 +1,3 @@
-
-
-
-
 $(document).ready(function(){
   var power_saved = $('#counter_all_time').data("total-power");
 

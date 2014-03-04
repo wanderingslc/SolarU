@@ -2,9 +2,7 @@ $(document).ready ->
   new Highcharts.Chart(
     chart:
       borderRadius: 0
-      # width: $(".bottom-row").width()
       height: ($('body').height() * (1 / 2))
-      # height: $("body").height()
       renderTo: "power_and_weather"
       backgroundColor: "#fff"
       plotBackgroundColor: null
@@ -35,7 +33,6 @@ $(document).ready ->
 
     yAxis: [
       min: 0
-      max: 70000
       title:
         text: "Watts"
         lineColor: "#dac092"
