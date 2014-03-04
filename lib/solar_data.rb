@@ -86,6 +86,7 @@ module SolarData
     uri.query = URI.encode_www_form(params)
     begin
       res = Net::HTTP.get_response(uri)
+      puts uri
       parsedResponse = JSON.parse(res.body)
     rescue JSON::ParserError => e
       puts e.message
