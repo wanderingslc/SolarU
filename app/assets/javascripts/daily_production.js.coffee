@@ -3,6 +3,8 @@ $(document).ready ->
   
   cookie_time = new Date($.cookie('last_loaded')).getDay()
 
+  
+
   daily_data = $("#daily_production").data("daily-data").split(" ")
   i = 0
   while i < daily_data.length

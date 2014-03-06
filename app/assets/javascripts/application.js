@@ -19,7 +19,7 @@
 //= require last_seven_days_weather
 //= require monthly_data
 //= require flipcounter
-//= require money_saved_counter
+//= require all_flip_counters
 //= require jquery.cookie
 
 

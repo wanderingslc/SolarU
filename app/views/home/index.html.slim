@@ -27,9 +27,32 @@
     =content_tag :div, nil, :id=> "monthly_data", :"data-monthly-name-one"=> @monthly_name_one, :"data-monthly-name-two"=> @monthly_name_two, :"data-monthly-name-three"=> @monthly_name_three, :"data-monthly-data-one"=> @monthly_data_one, :"data-monthly-data-two"=> @monthly_data_two, :"data-monthly-data-three"=> @monthly_data_three
 .row
   .span6
-  =content_tag :div, nil, :id=> "counter_all_time", :class=>"flip-counter", :"data-total-power"=> @total_output
-
-
+    p Total Output:
+    =content_tag :div, nil, :id=> "counter_total_output", :class=>"flip-counter", :"data-total-output"=> @total_output
+.row
+  .span3 id="money_saved_container"
+    p Total Saved:
+    =content_tag :div, nil, :id=> "counter_total_saved", :class=>"flip-counter" 
+  .span2 id="trees_container"
+    p Total Trees:
+    =content_tag :div, nil, :id=> "counter_total_trees", :class=>"flip-counter"
+  .span3 id="coffee_container"
+    p Total Coffee:
+    =content_tag :div, nil, :id=> "counter_total_coffee", :class=>"flip-counter"
+.row
+  .span4 id="laptops_container"
+    p Total Laptops:
+    =content_tag :div, nil, :id=> "counter_total_laptops", :class=>"flip-counter"
+  .span4 id="house_container"
+    p Total Houses
+    =content_tag :div, nil, :id=> "counter_total_houses", :class=>"flip-counter" 
+  .span4 id="coal_container"
+    p Total coal offset:
+    =content_tag :div, nil, :id=> "counter_total_coal", :class=>"flip-counter"
+.row
+  .span4 id="natural_gas_container"
+    p Total natural gas offset:      
+    =content_tag :div, nil, :id=> "counter_total_natural_gas", :class=>"flip-counter"
 / #counter_all_time
 /   p Money saved by this array:
 /   input name="counter-value" type="hidden" value=@energySavedAllTime

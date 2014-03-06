@@ -7,6 +7,9 @@
  *
  * Licensed under MIT
  * http://www.opensource.org/licenses/mit-license.php
+
+ * found here:
+ * http://cnanney.com/journal/code/apple-style-counter-revisited/
  */
 
 var flipCounter = function(d, options){
