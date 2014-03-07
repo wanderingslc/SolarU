@@ -100,14 +100,18 @@ module SolarData
     time = parsedResponse["intervals"].first["end_date"]
     parsedTime = time.scan(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}/).first.to_datetime
     pow_array = []
+    watt_array = []
     parsedResponse["intervals"].each do |pow|
       pow_array << pow["powr"]
+      watt_array << pow["enwh"]
     end
+
     if DailyProduction.count == 0
       dailyData = DailyProduction.new 
     else
       dailyData = DailyProduction.last
     end
+    dailyData.watts = watt_array
     dailyData.power_array = pow_array
     dailyData.start_time = parsedTime
     dailyData.unix_time = parsedTime.to_i

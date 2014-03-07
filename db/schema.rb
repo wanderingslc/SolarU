@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140204013659) do
+ActiveRecord::Schema.define(:version => 20140307003837) do
 
   create_table "daily_productions", :force => true do |t|
     t.text     "power_array"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20140204013659) do
     t.integer  "unix_time"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "watts"
   end
 
   create_table "energy_lifetime_arrays", :force => true do |t|

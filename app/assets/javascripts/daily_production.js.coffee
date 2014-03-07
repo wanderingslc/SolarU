@@ -1,16 +1,20 @@
 $(document).ready ->
+
+  # cookie ----------------------------------------------------------------------
   $.cookie('last_loaded', new Date())
   
   cookie_time = new Date($.cookie('last_loaded')).getDay()
 
-  
 
+  # set data and time vars for chart --------------------------------------------
   daily_data = $("#daily_production").data("daily-data").split(" ")
   i = 0
   while i < daily_data.length
     daily_data[i] = parseInt(daily_data[i], 10)
     i++
   daily_time = $("#daily_production").data("daily-time")
+
+  # draw chart -------------------------------------------------------------------
   daily_production = new Highcharts.Chart(
     chart:
       height: ($(window).height() * (1 / 2))
@@ -22,18 +26,14 @@ $(document).ready ->
       animation:
         easing: "linear"
         duration: 3000
-
       events:
         load: ->
           setInterval (->
-            $.get("/requests/current.json").success (response) ->
+            $.get("/requests/current_watts.json").success (response) ->
+              # data starts as a string, set it first to turn it into an array ------------
               if jQuery.type($("#daily_production").data("daily-data")) is "string"
-                if response.length > $("#daily_production").data("daily-data").split(" ").length
-                  $("#daily_production").data "daily-data", response
-                  daily_production.series[0].setData $("#daily_production").data("daily-data")
-                  console.log "chart redrawn"
-                else
-                  console.log "no new data, array length: " + $("#daily_production").data("daily-data").split(" ").length
+                $("#daily_production").data "daily-data", response
+                console.log("data was a string")
               else
                 if response.length > $("#daily_production").data("daily-data").length
                   $("#daily_production").data "daily-data", response
@@ -45,7 +45,7 @@ $(document).ready ->
                   $.removeCookie('last_loaded')
                   window.refresh()
                   console.log('window reloaded')
-          ), 200000
+          ), 500000
       title:
         text: "Energy Produced today, by the Hour"
         style:
@@ -98,3 +98,4 @@ $(document).ready ->
         duration: "3000"
      ]
   )
+

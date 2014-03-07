@@ -1,4 +1,4 @@
-$(document).ready ->
+# counters ------------------------------------------------------------------
   total_output = $("#counter_total_output").data("total-output")
 
   total_output_counter = new flipCounter("counter_total_output",
@@ -12,15 +12,12 @@ $(document).ready ->
     pace: 2000
     auto: false
   )
-
   total_trees = Math.round(total_output / 55300)
   total_output_trees = new flipCounter("counter_total_trees",
     value: total_trees
     pace: 2000
     auto: false
   )
-
-
   total_coffee = Math.round(total_output / 80)
   total_coffee_counter = new flipCounter("counter_total_coffee",
     value: total_coffee
@@ -34,21 +31,18 @@ $(document).ready ->
     pace: 2000
     auto: false
   )
-
   total_houses = Math.round(total_output / 10837000)
   total_houses_counter = new flipCounter("counter_total_houses",
     value: total_houses
     pace: 2000
     auto: false
   )
-
   total_coal = Math.round(total_output / 900)
   total_coal_counter = new flipCounter("counter_total_coal",
     value: total_coal
     pace: 2000
     auto: false
   )
-
   total_natural_gas = Math.round(total_output / 127)
   total_natural_gas_counter = new flipCounter("counter_total_natural_gas",
     value: total_natural_gas
@@ -60,7 +54,7 @@ $(document).ready ->
     all_counters = [
       total_output_counter, money_saved_counter, total_output_trees, 
       total_coffee_counter, total_laptops_counter, total_houses_counter, 
-      total_coal_counter,total_natural_gas_counter
+      total_coal_counter, total_natural_gas_counter
     ]
     all_multipliers = [1, 0.0000774, 55300, 80, 55, 10837000, 900, 127]
     for counter, index in all_counters
@@ -72,16 +66,12 @@ $(document).ready ->
       counter.incrementTo(new_counter_value, 10, 600)
 
   setInterval (->
-    reload_counters(9000000)
-  ), 5000
-
-
-
-
-
-
-  # setInterval(function(){
-  #   money_saved_counter.incrementTo
-  #   });
-  # }, 300000);
-  
+    initial_total_data = $("#counter_total_output").data("total-output")
+    console.log "initial total data: #{initial_total_data}"
+    # first, reset the flip counters
+    daily_total_in_watts = (response.reduce (t, s) -> t + s) 
+    # convert watts from current data into watt-hours for the total
+    new_total = (daily_total_in_watts * (new Date().getHours())) + initial_total_data
+    reload_counters(new_total)
+    console.log "new_total #{new_total}"
+  ), 500000

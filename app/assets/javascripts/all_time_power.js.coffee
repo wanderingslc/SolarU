@@ -1,15 +1,20 @@
 $(document).ready -> 
 
-  lifetime_unix_time = $("#power_all_time").data("lifetime-time") 
-  lifetime_data = $("#power_all_time").data("all-time-data").split(" ")
-
   turn_into_array = (data_string) ->
     i = 0
     while i < data_string.length
       data_string[i] = parseFloat(data_string[i], 10)
       i++
       
-  turn_into_array(lifetime_data)
+
+
+  lifetime_unix_time = $("#power_all_time").data("lifetime-time") 
+  if jQuery.type($("#power_all_time").data("all-time-data")) is "string"
+    lifetime_data = $("#power_all_time").data("all-time-data").split(" ")
+    turn_into_array(lifetime_data)
+  else
+    lifetime_data = $("#power_all_time").data("all-time-data")
+ 
 
   new Highcharts.Chart(
     chart:
