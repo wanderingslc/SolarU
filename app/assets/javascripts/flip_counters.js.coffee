@@ -1,4 +1,7 @@
 # counters ------------------------------------------------------------------
+  
+$(document).ready ->
+
   total_output = $("#counter_total_output").data("total-output")
 
   total_output_counter = new flipCounter("counter_total_output",
@@ -63,15 +66,13 @@
       else
         new_counter_value = Math.round(new_total_output / all_multipliers[index])
       console.log "new value: #{new_counter_value}"
-      counter.incrementTo(new_counter_value, 10, 600)
+      counter.incrementTo(new_counter_value, 20, 600)
 
   setInterval (->
     initial_total_data = $("#counter_total_output").data("total-output")
     console.log "initial total data: #{initial_total_data}"
-    # first, reset the flip counters
-    daily_total_in_watts = (response.reduce (t, s) -> t + s) 
-    # convert watts from current data into watt-hours for the total
-    new_total = (daily_total_in_watts * (new Date().getHours())) + initial_total_data
-    reload_counters(new_total)
-    console.log "new_total #{new_total}"
-  ), 500000
+    $.get("/requests/current_watt_hours.json").success (response) ->
+      daily_total = (response.reduce (t, s) -> t + s) + initial_total_data
+      reload_counters(daily_total)
+      console.log "daily total #{daily_total}"
+  ), 5000
