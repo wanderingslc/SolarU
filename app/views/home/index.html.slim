@@ -1,17 +1,8 @@
-/ .container
-/   .top
-/     .top-right
-/       #daily_production_row
-        
-/   .bottom
-/     .bottom-row
-/       #power_all_time_row
-/         p
+.row id="header"
+  .span12
+    h1 SOLAR
+    =image_tag("u_logo.png", size: "60x60")
 
-/   #power_and_weather
-/     p this is the power and weather 
-
-/   #monthly_data  
 .row
   .span6
     =content_tag :div, nil, :id=> "daily_production", :"data-daily-data"=> @daily_data, :"data-daily-time"=>@daily_time
@@ -29,6 +20,8 @@
   .span6
     p Total Output:
     =content_tag :div, nil, :id=> "counter_total_output", :class=>"flip-counter", :"data-total-output"=> @total_output
+
+
 .row
   .span3 id="money_saved_container"
     p Total Saved:

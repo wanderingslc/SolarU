@@ -29,7 +29,6 @@ $(document).ready ->
       events:
         load: ->
           setInterval (->
-            $.get("/requests/current_watts.json").success (response) ->
               # data starts as a string, set it first to turn it into an array ------------
               if jQuery.type($("#daily_production").data("daily-data")) is "string"
                 $("#daily_production").data "daily-data", response
