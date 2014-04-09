@@ -18,9 +18,9 @@
 //= require daily_production
 //= require last_seven_days_weather
 //= require monthly_data
-//= require flipcounter
-//= require flip_counters
 //= require jquery.cookie
+//= require owl.carousel
+//= require comparison_counters
 
 
 

@@ -23,7 +23,7 @@ $(document).ready ->
       height: ($(window).height() * (1 / 2))
       # height: $(".bottom-row").height()
       renderTo: "power_all_time"
-      backgroundColor: "#fff"
+      backgroundColor: "#000000"
       plotBackgroundColor: null
       type: "areaspline"
       style:

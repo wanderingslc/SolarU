@@ -24,7 +24,7 @@ $(document).ready ->
       height: ($("body").height() * (1 / 2))
       renderTo: "monthly_data"
       type: "areaspline"
-      backgroundColor: "#fff"
+      backgroundColor: "#000000"
       plotBackgroundColor: null
 
     title:

@@ -4,48 +4,63 @@
     =image_tag("u_logo.png", size: "60x60")
 
 .row
-  .span6
-    =content_tag :div, nil, :id=> "daily_production", :"data-daily-data"=> @daily_data, :"data-daily-time"=>@daily_time
-  .span6
-    =content_tag :div, nil, :id=> "power_all_time", :"data-all-time-data"=> @lifetime_data, :"data-lifetime-time"=>@lifetime_unix_time
+  .span5 id="forecast_container"
+    iframe#forecast_embed frameborder="0" height="245" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&color=#CC0000&name=U of U&font=helvetica") type="text/html" width="100%" 
+  .span4 id="stats_container"
+    table
+      tr
+        th Highest Daily Output:
+        td = @highestOutput
+      tr
+        th Average Daily Output:
+        td = @averageOutput
+      tr
+        th Total Output:
+        td = @total_output
+      /! tr
+      /!   th Yesterday's Peak Time:
+      /!   td
 
-    
+
+  .owl-carousel.span3 id="top_slider"
+    .span3.comparison_container id="money_saved_container"
+      =content_tag :div, nil, :id=> "money_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_money 
+      p Total Saved: 
+
+    .span3.comparison_container id="trees_container"
+      =content_tag :div, nil, :id=> "trees_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_trees 
+      p Total Trees:
+
+    .span3.comparison_container id="coffee_container"
+      =content_tag :div, nil, :id=> "coffee_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_coffee 
+      p Total Coffee:
+
+    .span3.comparison_container id="laptops_container"
+      =content_tag :div, nil, :id=> "laptops_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_laptops 
+      p Total Laptops:
+
+    .span3.comparison_container id="house_container"
+      =content_tag :div, nil, :id=> "houses_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_houses 
+      p Total Houses
+
+    .span3.comparison_container id="coal_container"
+      =content_tag :div, nil, :id=> "coal_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_coal 
+      p Total coal offset:
+
+    .span3.comparison_container id="natural_gas_container"
+      =content_tag :div, nil, :id=> "gas_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_gas 
+      p Total natural gas offset:      
+
 .row
-  .span6
-    =content_tag :div, nil, :id=> "power_and_weather", :"data-seven-day-time"=>@last_seven_day_time, :"data-seven-day-data"=>@last_seven_day_data, :"data-temperature-data"=>@temperature_data, :"data-cloud-data"=>@cloud_cover_data
-    #power_and_weather
-  .span6
-    =content_tag :div, nil, :id=> "monthly_data", :"data-monthly-name-one"=> @monthly_name_one, :"data-monthly-name-two"=> @monthly_name_two, :"data-monthly-name-three"=> @monthly_name_three, :"data-monthly-data-one"=> @monthly_data_one, :"data-monthly-data-two"=> @monthly_data_two, :"data-monthly-data-three"=> @monthly_data_three
-.row
-  .span6
-    p Total Output:
-    =content_tag :div, nil, :id=> "counter_total_output", :class=>"flip-counter", :"data-total-output"=> @total_output
+  .span10.offset1.owl-carousel id="graph_carousel"
+    .graph_container
+      =content_tag :div, nil, :id=> "daily_production", :class=>"span10", :"data-daily-data"=> @daily_data, :"data-daily-time"=>@daily_time
+    .graph_container
+      =content_tag :div, nil, :id=> "power_all_time", :class=>"span10", :"data-all-time-data"=> @lifetime_data, :"data-lifetime-time"=>@lifetime_unix_time
+    .graph_container
+      =content_tag :div, nil, :id=> "power_and_weather", :class=>"span10", :"data-seven-day-time"=>@last_seven_day_time, :"data-seven-day-data"=>@last_seven_day_data, :"data-temperature-data"=>@temperature_data, :"data-cloud-data"=>@cloud_cover_data
+      #power_and_weather
+    .graph_container
+      =content_tag :div, nil, :id=> "monthly_data", :class=>"span10", :"data-monthly-name-one"=> @monthly_name_one, :"data-monthly-name-two"=> @monthly_name_two, :"data-monthly-name-three"=> @monthly_name_three, :"data-monthly-data-one"=> @monthly_data_one, :"data-monthly-data-two"=> @monthly_data_two, :"data-monthly-data-three"=> @monthly_data_three
 
 
-.row
-  .span3 id="money_saved_container"
-    p Total Saved:
-    =content_tag :div, nil, :id=> "counter_total_saved", :class=>"flip-counter" 
-  .span2 id="trees_container"
-    p Total Trees:
-    =content_tag :div, nil, :id=> "counter_total_trees", :class=>"flip-counter"
-  .span3 id="coffee_container"
-    p Total Coffee:
-    =content_tag :div, nil, :id=> "counter_total_coffee", :class=>"flip-counter"
-.row
-  .span4 id="laptops_container"
-    p Total Laptops:
-    =content_tag :div, nil, :id=> "counter_total_laptops", :class=>"flip-counter"
-  .span4 id="house_container"
-    p Total Houses
-    =content_tag :div, nil, :id=> "counter_total_houses", :class=>"flip-counter" 
-  .span4 id="coal_container"
-    p Total coal offset:
-    =content_tag :div, nil, :id=> "counter_total_coal", :class=>"flip-counter"
-.row
-  .span4 id="natural_gas_container"
-    p Total natural gas offset:      
-    =content_tag :div, nil, :id=> "counter_total_natural_gas", :class=>"flip-counter"
-/ #counter_all_time
-/   p Money saved by this array:
-/   input name="counter-value" type="hidden" value=@energySavedAllTime

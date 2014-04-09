@@ -6,11 +6,11 @@ class HomeController < ApplicationController
   def index
 # stats variables --------------------------------------------------------------------------------------
     @total_output = EnergyLifetimeArray.last.lifetime_data.reduce(:+)
-    # @energySavedYesterday = ((EnergyLifetimeArray.last.lifetime_data.pop / 1000) * 7.74) / 100
+    @averageOutput = ((EnergyLifetimeArray.last.lifetime_data.reduce(:+)) / (EnergyLifetimeArray.last.lifetime_data.count))
+    @highestOutput = EnergyLifetimeArray.last.lifetime_data.max
+    # @peak_time = (DailyProduction.last.power_array.each_with_index.max_by { |x, idx| x || -1 }[1])
 
-    # @averageOutput = (@totalOutput / (EnergyLifetimeArray.last.raw_array.count))
-    # @highestOutput = EnergyLifetimeArray.last.raw_array.max
-    
+
 # lifetime --------------------------------------------------------------------------------------
     @lifetime_unix_time = EnergyLifetimeArray.last.unix_time * 1000
     @lifetime_data = EnergyLifetimeArray.last.lifetime_data
@@ -36,6 +36,17 @@ class HomeController < ApplicationController
       cloud_container << x.cloud_cover
     end
     @cloud_cover_data = cloud_container.reverse!.flatten
+
+# comparisons-------------------------------------------------------------------------------------
+  @comparison_money = (((@total_output / 1000) * 7.74) / 100).round(2)
+  @comparison_trees = (@total_output / 55300).round(2)
+  @comparison_coffee = (@total_output / 80).round(2)
+  @comparison_laptops = (@total_output / 55).round(2)
+  @comparison_houses = (@total_output / 10837000).round(2)
+  @comparison_coal = (@total_output / 900).round(2)
+  @comparison_natural_gas = (@total_output / 127).round(2)
+
+
 
 # last three months -----------------------------------------------------------------------------
 
