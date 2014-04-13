@@ -5,7 +5,7 @@ $(document).ready ->
   setValues = () ->
     for data in comparisons
       comparison_data = $(data).find('.comparison_div').data('comparison')
-      $(data).append(comparison_data)
+      $(data).find(".data_paragraph").append(comparison_data)
 
   setValues()
 
@@ -17,7 +17,7 @@ $(document).ready ->
     rewindSpeed: 1000,
     autoPlay: true,
     stopOnHover: false,
-    navigation: true,
+    navigation: false,
     navigationText: ["<",">"],
     rewindNav: true,
     scrollPerPage: false,
@@ -58,7 +58,7 @@ $(document).ready ->
     rewindSpeed: 1000,
     autoPlay: true,
     stopOnHover: false,
-    navigation: true,
+    navigation: false,
     navigationText: ["<",">"],
     rewindNav: true,
     scrollPerPage: false,
