@@ -10,7 +10,7 @@ body{
   height: 100vh;
   width: 100vw;
   margin: 0px;
-  background-color: $light_black;
+  background-color: $grey;
   color: $uteRed;
   #header{
     background-color: $black;
@@ -53,7 +53,7 @@ body{
       padding: 0px;
     }
     .intro_paragraph, .closing_paragraph{
-      color: $light_black;
+      color: $grey;
     }
     .data_paragraph{
       font-size: 2em;
