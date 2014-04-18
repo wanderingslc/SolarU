@@ -36,15 +36,23 @@ body{
       float: left;
     }
   }
-
+  #forecast_container {
+    margin-left:10px;
+  }
   .tile_container{
     background-color: $off_white;
   }
+  .twitter-timeline{
 
+  }
+  #top_slider {
+    margin-left:10px;
+  }
   .comparison_container{
     img{
-      height: 300px;
-      width: 300px;
+      margin-top:50px;
+      height: 200px;
+      width: 100%;
     }
     .intro_paragraph, .data_paragraph, .closing_paragraph{
       font-size: 1.5em;
@@ -67,7 +75,7 @@ body{
   }
 #vital_stats_container{
   text-align: right;
-
+  
   h2,h3,h5{
     margin: 0.3em 0 0 0;
   }
@@ -78,4 +86,5 @@ body{
 
 
 }
+
 
