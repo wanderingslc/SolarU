@@ -10,7 +10,7 @@ body{
   height: 100vh;
   width: 100vw;
   margin: 0px;
-  background-color: $light_black;
+  background-color: $off_white;
   color: $uteRed;
   #header{
     background-color: $black;
@@ -38,7 +38,7 @@ body{
   }
 
   .tile_container{
-    background-color: $black;
+    background-color: $off_white;
   }
 
   .comparison_container{
@@ -53,7 +53,7 @@ body{
       padding: 0px;
     }
     .intro_paragraph, .closing_paragraph{
-      color: $light_black;
+      color: $black;
     }
     .data_paragraph{
       font-size: 2em;

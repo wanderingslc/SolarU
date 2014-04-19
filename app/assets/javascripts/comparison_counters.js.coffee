@@ -56,7 +56,7 @@ $(document).ready ->
     slideSpeed: 500,
     paginationSpeed: 800,
     rewindSpeed: 1000,
-    autoPlay: true,
+    autoPlay: false,
     stopOnHover: false,
     navigation: false,
     navigationText: ["<",">"],

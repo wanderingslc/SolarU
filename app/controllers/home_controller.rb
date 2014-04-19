@@ -47,7 +47,6 @@ class HomeController < ApplicationController
   @comparison_natural_gas = (@total_output / 127).round(2)
 
 
-
 # last three months -----------------------------------------------------------------------------
 
     3.times do |x|

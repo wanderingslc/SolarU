@@ -1,4 +1,4 @@
-module SolarData
+module SolarData 
   require 'net/http'
 
   @api_key = ENV["SOLAR_U_API_KEY"]
@@ -81,41 +81,59 @@ module SolarData
 # ------------------------Current Production --------------------------
 
   def self.get_current_production
-    uri=URI("#{@api_name}/stats")
-    params = { :key => @api_key}  
-    uri.query = URI.encode_www_form(params)
-    begin
-      res = Net::HTTP.get_response(uri)
-      puts uri
-      parsedResponse = JSON.parse(res.body)
-    rescue JSON::ParserError => e
-      puts e.message
-      puts "Error JSON Error! Retrying!"
-      retry
-    rescue Net::ReadTimeout => e
-      puts e.message
-      puts "Error Read Timeout! Retrying!"
-      retry
-    end
-    time = parsedResponse["intervals"].first["end_date"]
-    parsedTime = time.scan(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}/).first.to_datetime
-    pow_array = []
-    watt_array = []
-    parsedResponse["intervals"].each do |pow|
-      pow_array << pow["powr"]
-      watt_array << pow["enwh"]
-    end
+    10.times do 
+      uri=URI("#{@api_name}/stats")
+      params = { :key => @api_key}  
+      uri.query = URI.encode_www_form(params)
+      begin
+        res = Net::HTTP.get_response(uri)  
+      rescue JSON::ParserError => e
+        sleep 5
+        puts e.message
+        Rails.logger.warn "#{e.message} at #{Time.now}"
+        puts "Error JSON Error! Retrying!"
+        retry
+      rescue Net::ReadTimeout => e
+        sleep 5
+        Rails.logger.warn "#{e.message} at #{Time.now}"
+        puts "Error Read Timeout! Retrying!"
+        retry
+      rescue Net::HTTPServiceUnavailable => e
+        sleep 10
+        Rails.logger.warn "#{e.message} at #{Time.now}"
+        retry
+      rescue => e
+        sleep 5
+        Rails.logger.warn "#{e.message} at #{Time.now}"
+        retry
+      end
+      if res.code == '200'
+        puts uri
+        parsedResponse = JSON.parse(res.body)
+        time = parsedResponse["intervals"].first["end_date"]
+        parsedTime = time.scan(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2}/).first.to_datetime
+        pow_array = []
+        watt_array = []
+        parsedResponse["intervals"].each do |pow|
+          pow_array << pow["powr"]
+          watt_array << pow["enwh"]
+        end
 
-    if DailyProduction.count == 0
-      dailyData = DailyProduction.new 
-    else
-      dailyData = DailyProduction.last
+        if DailyProduction.count == 0
+          dailyData = DailyProduction.new 
+        else
+          dailyData = DailyProduction.last
+        end
+        dailyData.watts = watt_array
+        dailyData.power_array = pow_array
+        dailyData.start_time = parsedTime
+        dailyData.unix_time = parsedTime.to_i
+        dailyData.save
+        break
+      else
+        Rails.logger.warn "Unhandled failure at #{Time.now}"
+      end
     end
-    dailyData.watts = watt_array
-    dailyData.power_array = pow_array
-    dailyData.start_time = parsedTime
-    dailyData.unix_time = parsedTime.to_i
-    dailyData.save
   end
 end 
 
