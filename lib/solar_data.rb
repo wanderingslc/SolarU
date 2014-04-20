@@ -55,23 +55,41 @@ module SolarData
       start_date = ((Time.now.beginning_of_day - 1.day) - x.days).strftime('%Y-%m-%d')
       end_date = (( Time.now.beginning_of_day ) - x.days).strftime('%Y-%m-%d')
       uri=URI(@api_name + '/stats?key=' + @api_key + '&start=' + start_date + 'T00:00-0700' +'&end=' + end_date + 'T00:00-0700')
+      try_iterator = 0        
       begin
         res = Net::HTTP.get_response(uri)
-        parsedResponse = JSON.parse(res.body)
       rescue JSON::ParserError => e
-        puts e.message
-        puts "Error JSON Error! Retrying!"
-        retry
+        Rails.logger.info "#{e}"
+        try_iterator += 1
+        if try_iterator <= 50
+          retry
+        else
+          Rails.logger.error "JSON error at #{Time.now}"
+        end
       rescue Net::ReadTimeout => e
-        puts e.message
-        puts "Error Read Timeout! Retrying!"
-        retry
+        Rails.logger.info "#{e}"
+        if try_iterator <= 50
+          retry
+        else
+          Rails.logger.error "READTIMEOUT error at #{Time.now}"
+        end
+      rescue => e
+        Rails.logger.info "#{e}"
+        if try_iterator <= 50
+          retry
+        else
+          Rails.logger.error "other error at #{Time.now}"  
+        end      
       end
-      parsedResponse['intervals'].each do |y|
-        response_array << y['powr']
+      if res.code == '200'
+        parsedResponse = JSON.parse(res.body)
+        parsedResponse['intervals'].each do |y|
+          response_array << y['powr']
+        end
+      else
+        Rails.logger.error "error running seven_days at #{Time.now}"
       end
     end
-
     x = LastSevenDaysArray.new
     x.power_array = response_array.in_groups_of(6).map{|a| a.reduce(:+)}
     x.start_date = Time.now.beginning_of_day - 7.days.to_i
@@ -90,21 +108,21 @@ module SolarData
       rescue JSON::ParserError => e
         sleep 5
         puts e.message
-        Rails.logger.warn "#{e.message} at #{Time.now}"
+        Rails.logger.error "#{e.message} at #{Time.now}"
         puts "Error JSON Error! Retrying!"
         retry
       rescue Net::ReadTimeout => e
         sleep 5
-        Rails.logger.warn "#{e.message} at #{Time.now}"
+        Rails.logger.error "#{e.message} at #{Time.now}"
         puts "Error Read Timeout! Retrying!"
         retry
       rescue Net::HTTPServiceUnavailable => e
         sleep 10
-        Rails.logger.warn "#{e.message} at #{Time.now}"
+        Rails.logger.error "#{e.message} at #{Time.now}"
         retry
       rescue => e
         sleep 5
-        Rails.logger.warn "#{e.message} at #{Time.now}"
+        Rails.logger.error "#{e.message} at #{Time.now}"
         retry
       end
       if res.code == '200'
@@ -131,7 +149,7 @@ module SolarData
         dailyData.save
         break
       else
-        Rails.logger.warn "Unhandled failure at #{Time.now}"
+        Rails.logger.error "Unhandled failure for SolarData.get_current_production at #{Time.now}"
       end
     end
   end
