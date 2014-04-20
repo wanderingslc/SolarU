@@ -16,16 +16,19 @@ module SolarData
       try_iterator += 1
       if try_iterator >= 50
         retry
+      end
     rescue Net::ReadTimeout => e
       Rails.logger.error "Error Read Timeout! getting energy lifetime Retrying!"
       try_iterator += 1
       if try_iterator >= 50
         retry
+      end
     rescue => e
       Rails.logger.error "Error getting energy lifetime at #{Time.now}"
       try_iterator += 1
       if try_iterator >= 50
         retry
+      end
     end
     if res.code == '200'
       parsedResponse = JSON.parse(res.body)    
