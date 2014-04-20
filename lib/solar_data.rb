@@ -8,29 +8,41 @@ module SolarData
     uri = URI("#{@api_name}/energy_lifetime")
     params = { :key => @api_key }
     uri.query = URI.encode_www_form(params)
+    try_iterator = 0
     begin
       res = Net::HTTP.get_response(uri)
-      parsedResponse = JSON.parse(res.body)
     rescue JSON::ParserError => e
-      puts e.message
-      puts "Error JSON Error! Retrying!"
-      retry
+      Rails.logger.error "Error JSON Error! getting energy lifetime Retrying!"
+      try_iterator += 1
+      if try_iterator >= 50
+        retry
     rescue Net::ReadTimeout => e
-      puts e.message
-      puts "Error Read Timeout! Retrying!"
-      retry
+      Rails.logger.error "Error Read Timeout! getting energy lifetime Retrying!"
+      try_iterator += 1
+      if try_iterator >= 50
+        retry
+    rescue => e
+      Rails.logger.error "Error getting energy lifetime at #{Time.now}"
+      try_iterator += 1
+      if try_iterator >= 50
+        retry
     end
-    responseData = parsedResponse["production"]
-    unparsed_time = parsedResponse["start_date"]
-    parsedTime = Time.parse(unparsed_time.scan(/\d{4}-\d{2}-\d{2}/).first)
-    if EnergyLifetimeArray.count == 0
-      x = EnergyLifetimeArray.new 
+    if res.code == '200'
+      parsedResponse = JSON.parse(res.body)    
+      responseData = parsedResponse["production"]
+      unparsed_time = parsedResponse["start_date"]
+      parsedTime = Time.parse(unparsed_time.scan(/\d{4}-\d{2}-\d{2}/).first)
+      if EnergyLifetimeArray.count == 0
+        x = EnergyLifetimeArray.new 
+      else
+        x = EnergyLifetimeArray.last
+      end
+      x.lifetime_data = responseData
+      x.unix_time = parsedTime.to_i
+      x.save
     else
-      x = EnergyLifetimeArray.last
+      Rails.logger.error "Error getting energy lifetime at #{Time.now}"
     end
-    x.lifetime_data = responseData
-    x.unix_time = parsedTime.to_i
-    x.save
   end  
  
 # ------------- monthly graph ------------- ------------- ------------- 
