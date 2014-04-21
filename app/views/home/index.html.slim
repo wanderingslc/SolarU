@@ -1,10 +1,10 @@
 .row id="header"
   .span4
     h1 SOLAR
-    =image_tag("u_logo.png", size: "60x60")
+    =image_tag("u_logo.png", size: "80x80")
 
 .main-div 
-  .row
+  .row.row-1
     .span5#forecast_container.tile_container
       iframe#forecast_embed frameborder="0" height="245" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&name=U of U&color=#2A2C2B&text-color=#2A2C2B&font=helvetica") type="text/html" width="100%" 
 
@@ -72,7 +72,7 @@
           .span5
             =image_tag("coffee.png")
 
-    a.twitter-timeline.span4 data-widget-id="457273566224850944" height="200" width="200" href="https://twitter.com/UofUsolar"  Tweets by @UofUsolar
+    a.twitter-timeline.span4 data-widget-id="457273566224850944" height="250" width="250" href="https://twitter.com/UofUsolar"  Tweets by @UofUsolar
     javascript:
        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
         

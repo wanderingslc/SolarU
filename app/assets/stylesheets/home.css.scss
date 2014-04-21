@@ -36,6 +36,9 @@ body{
       float: left;
     }
   }
+  .row-1 {
+
+  }
   #forecast_container {
     margin-left:10px;
   }
@@ -49,13 +52,15 @@ body{
     margin-left:10px;
   }
   .comparison_container{
+    
+    max-height: 35%;
     img{
       margin-top:50px;
-      height: 200px;
+      height: 50%;
       width: 100%;
     }
     .intro_paragraph, .data_paragraph, .closing_paragraph{
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-bottom: 0.1em;
       text-align: right;
       padding: 0px;
