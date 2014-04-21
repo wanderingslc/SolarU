@@ -9,10 +9,10 @@
       iframe#forecast_embed frameborder="0" height="245" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&name=U of U&color=#2A2C2B&text-color=#2A2C2B&font=helvetica") type="text/html" width="100%" 
 
     .owl-carousel.span4#top_slider.tile_container
-      .span4.comparison_container id="money_saved_container"
+      .span11.comparison_container id="money_saved_container"
         =content_tag :div, nil, :id=> "money_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_money 
         .row
-          .span4
+          .span7
             p.intro_paragraph In total, this array has saved
             p.data_paragraph $
           .span5
