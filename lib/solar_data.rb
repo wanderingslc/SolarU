@@ -12,19 +12,19 @@ module SolarData
     begin
       res = Net::HTTP.get_response(uri)
     rescue JSON::ParserError => e
-      Rails.logger.error "Error JSON Error! getting energy lifetime Retrying!"
+      Rails.logger.error "[get_energy_lifetime]JSON Error at #{Time.now}"
       try_iterator += 1
       if try_iterator >= 50
         retry
       end
     rescue Net::ReadTimeout => e
-      Rails.logger.error "Error Read Timeout! getting energy lifetime Retrying!"
+      Rails.logger.error "[get_energy_lifetime] Read Timeout Error at #{Time.now}"
       try_iterator += 1
       if try_iterator >= 50
         retry
       end
     rescue => e
-      Rails.logger.error "Error getting energy lifetime at #{Time.now}"
+      Rails.logger.error "[get_energy_lifetime] Error at #{Time.now}"
       try_iterator += 1
       if try_iterator >= 50
         retry
@@ -79,21 +79,21 @@ module SolarData
         if try_iterator <= 50
           retry
         else
-          Rails.logger.error "JSON error at #{Time.now}"
+          Rails.logger.error "[get_trailing_seven_days] JSON error at #{Time.now}"
         end
       rescue Net::ReadTimeout => e
         Rails.logger.info "#{e}"
         if try_iterator <= 50
           retry
         else
-          Rails.logger.error "READTIMEOUT error at #{Time.now}"
+          Rails.logger.error "[get_trailing_seven_days] READTIMEOUT error at #{Time.now}"
         end
       rescue => e
         Rails.logger.info "#{e}"
         if try_iterator <= 50
           retry
         else
-          Rails.logger.error "other error at #{Time.now}"  
+          Rails.logger.error "[get_trailing_seven_days] other error at #{Time.now}"  
         end      
       end
       if res.code == '200'
@@ -123,21 +123,21 @@ module SolarData
       rescue JSON::ParserError => e
         sleep 5
         puts e.message
-        Rails.logger.error "#{e.message} at #{Time.now}"
+        Rails.logger.error "[get_current_production], #{e.message} at #{Time.now}"
         puts "Error JSON Error! Retrying!"
         retry
       rescue Net::ReadTimeout => e
         sleep 5
-        Rails.logger.error "#{e.message} at #{Time.now}"
+        Rails.logger.error "[get_current_production], #{e.message} at #{Time.now}"
         puts "Error Read Timeout! Retrying!"
         retry
       rescue Net::HTTPServiceUnavailable => e
         sleep 10
-        Rails.logger.error "#{e.message} at #{Time.now}"
+        Rails.logger.error "[get_current_production], #{e.message} at #{Time.now}"
         retry
       rescue => e
         sleep 5
-        Rails.logger.error "#{e.message} at #{Time.now}"
+        Rails.logger.error "[get_current_production], #{e.message} at #{Time.now}"
         retry
       end
       if res.code == '200'
