@@ -77,7 +77,7 @@
             p.data_paragraph
             p.closing_paragraph pounds of coal
           .span5
-            =image_tag("coffee.png")
+            =image_tag("coal_plant.png")
       .span11.comparison_container id="natural_gas_container"
         =content_tag :div, nil, :id=> "gas_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_gas 
         .row
@@ -85,8 +85,8 @@
             p.intro_paragraph This array has produced enough energy to offset the burning of 
             p.data_paragraph
             p.closing_paragraph pounds of natural gas
-          .span5
-            =image_tag("coffee.png")  
+          .span4
+            =image_tag("natural_gas.png")  
   
   .span5#forecast_container.tile_container
       iframe#forecast_embed frameborder="0" height="245" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&name=U of U&color=#2A2C2B&text-color=#2A2C2B&font=helvetica") type="text/html" width="100%" 
