@@ -65,15 +65,10 @@ $(document).ready ->
 
     plotOptions:
       series:
-        fillColor:
-          linearGradient: [0, 0, 0, 300]
-          stops: [[0, "#53806E"], [1, "rgba(83, 128, 110, 0.8)"]]
-
         shadow: true
         offsetX: "3px"
         offsetY: "3px"
         opacity: "0.6"
-        lineColor: "#53806E"
         marker:
           enabled: false
           

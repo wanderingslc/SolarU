@@ -10,7 +10,7 @@ $green: #53806E;
 
 body{
   font-size: 20px;
-  font-family: "junction-regular";
+  font-family: "opensans";
   height: 100vh;
   width: 100vw;
   margin: 0px;
@@ -29,20 +29,22 @@ body{
       line-height: 1em;
       padding: 0px;
       color: $uteRed;
+      text-align: right;
     }
     h2{
       margin-top: 0em;
       margin-bottom: 0.1em;
       color: $off_white;
-      font-size: 1.5em;
+      font-size: 3em;
     }
     h3{
       margin-top: 0.2em;
       margin-bottom: 0em;
+      font-size: 2em;
     }
     h5{
       margin-top: 0px;
-
+      font-size: 1.2em;
     }
     h4{
       vertical-align: baseline;
@@ -66,6 +68,10 @@ body{
   }
   #forecast_container {
     
+  }
+
+  #main-div{
+    margin-top: 3em;
   }
   .tile_container{
     background-color: $off_white;

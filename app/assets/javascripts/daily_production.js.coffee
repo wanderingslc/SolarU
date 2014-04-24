@@ -45,15 +45,14 @@ $(document).ready ->
                   window.refresh()
                   console.log('window reloaded')
           ), 500000
-      title:
-        text: "Energy Produced today, by the Hour"
-        style:
-          color: "#cc0000"
-          fontWeight: "bold"
-          fontSize: "25px"
-          fontFamily: "'orbitron-light', sans-serif"
-      legend:
-        enabled: false
+    title:
+      text: "Energy Produced today, by the Hour"
+      style:
+        color: "#cc0000"
+        fontWeight: "bold"
+        fontSize: "25px"
+    legend:
+      enabled: false
 
     xAxis:
       type: "datetime"
@@ -61,6 +60,8 @@ $(document).ready ->
       labels:
         style:
           color: "#cc0000"
+      legend:
+        enabled: false
 
     yAxis:
       title:
@@ -74,14 +75,10 @@ $(document).ready ->
 
     plotOptions:
       series:
-        fillColor:
-          linearGradient: [ 0, 0, 0, 300 ]
-          stops: [ [ 0, "#00FF64" ], [ 1, "rgba(0, 20, 10, 0.7)" ] ]
         shadow: true
         offsetX: "3px"
         offsetY: "3px"
         opacity: "0.6"
-        lineColor: "#00FF64"
         marker:
           enabled: false
     navigation:
