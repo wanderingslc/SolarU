@@ -50,11 +50,10 @@ body{
       margin: 0px;
     }
     h1{
-      padding-top: 20px;
-      padding: 10px;
+      padding-top: 0px;
       display: inline;
       float: left;
-      font-size: 4em;
+      font-size: 4.3em;
       padding-right: 0.3em;
       margin: 0px;
       color: $off_white;
@@ -62,6 +61,7 @@ body{
     img{
       padding:10px;
       float: left;
+      vertical-align: baseline;
     }
   }
   #forecast_container {
