@@ -2,6 +2,19 @@
   .span4
     h1 SOLAR
     =image_tag("u_logo.png", size: "80x80")
+  .span2.offset1
+    h3 Highest Output: 
+    h2 #{@highestOutput}
+    h5 watts / day
+  .span2
+    h3 Average Output: 
+    h2 #{@averageOutput}
+    h5 watts / day
+  .span2
+    h3 Total Output: 
+    h2 #{@total_output}
+    h5 watts  
+
 
 .main-div 
   .span2#vital_stats_container.tile_container

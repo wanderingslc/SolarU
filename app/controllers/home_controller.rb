@@ -46,13 +46,7 @@ class HomeController < ApplicationController
     @comparison_coal = (@total_output / 900).round(2)
     @comparison_natural_gas = (@total_output / 127).round(2)
 
-
-<<<<<<< HEAD
-# last three months -----------------------------------------------------------------------------
-=======
-
     # last three months -----------------------------------------------------------------------------
->>>>>>> ee9271f45cc6d9c8c30e9c25b3e1a37ef5a61842
 
     3.times do |x|
       if x == 0

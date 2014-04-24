@@ -17,7 +17,6 @@ body{
   background-color: $off_white;
   color: $uteRed;
   #header{
-<<<<<<< HEAD
     background: -moz-linear-gradient(top,  rgba(30,30,32,1) 0%, rgba(42,44,43,0.89) 74%, rgba(42,44,43,0.85) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(74%,rgba(42,44,43,0.89)), color-stop(100%,rgba(42,44,43,0.85))); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.89) 74%,rgba(42,44,43,0.85) 100%); /* Chrome10+,Safari5.1+ */
@@ -25,12 +24,9 @@ body{
     background: -ms-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.89) 74%,rgba(42,44,43,0.85) 100%); /* IE10+ */
     background: linear-gradient(to bottom,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.89) 74%,rgba(42,44,43,0.85) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', endColorstr='#d92a2c2b',GradientType=0 ); /* IE6-9 */
-
-=======
     background-color: $black;
     border-bottom: 2px solid $uteRed;
  
->>>>>>> ee9271f45cc6d9c8c30e9c25b3e1a37ef5a61842
     h4{
       vertical-align: baseline;
       color: #fff;
@@ -56,12 +52,9 @@ body{
   }
   .tile_container{
     background-color: $off_white;
-<<<<<<< HEAD
-=======
   }
   #top_slider {
     margin-left:10px;
->>>>>>> ee9271f45cc6d9c8c30e9c25b3e1a37ef5a61842
   }
   .comparison_container{
     max-height: 35%;
@@ -77,11 +70,8 @@ body{
       padding: 0px;
     }
     .intro_paragraph, .closing_paragraph{
-<<<<<<< HEAD
       color: $black;
-=======
       color: $grey;
->>>>>>> ee9271f45cc6d9c8c30e9c25b3e1a37ef5a61842
     }
     .data_paragraph{
       font-size: 2em;
