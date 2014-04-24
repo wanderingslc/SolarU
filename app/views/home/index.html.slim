@@ -1,7 +1,7 @@
 .row id="header"
   .span4
     h1 SOLAR
-    =image_tag("u_logo.png", size: "80x80")
+    =image_tag("u_logo.png", size: "100x100")
   .span2.offset1
     h3 Highest Output: 
     h2 #{@highestOutput}
@@ -17,7 +17,7 @@
 
 
 #main-div.offset1.span10
-  .owl-carousel.span5#top_slider.tile_container
+  .owl-carousel.span4#top_slider.tile_container
       .span11.comparison_container id="money_saved_container"
         =content_tag :div, nil, :id=> "money_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_money 
         .row
@@ -81,7 +81,7 @@
           .span4
             =image_tag("natural_gas.png")  
   
-  .span5.offset1#forecast_container.tile_container
+  .span6.offset1#forecast_container.tile_container
       iframe#forecast_embed frameborder="0" height="245" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&name=U of U&color=#2A2C2B&text-color=#2A2C2B&font=helvetica") type="text/html" width="100%" 
 
   .span12.owl-carousel#graph_carousel.tile_container

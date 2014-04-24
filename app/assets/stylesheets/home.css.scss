@@ -1,10 +1,7 @@
-$uteRed: #DC3522;
+$uteRed: #cc0000;
 // #CC0000;
-$black: #1E1E20;
+$black: #000000;
 $grey: #808080;
-$off_white: #FCFFF5;
-$slate: #2A2C2B;
-$green: #53806E;
 
 
 
@@ -14,17 +11,17 @@ body{
   height: 100vh;
   width: 100vw;
   margin: 0px;
-  background-color: $off_white;
+  background-color: white;
   #header{
-    background: -moz-linear-gradient(top,  rgba(30,30,32,1) 0%, rgba(42,44,43,0.89) 74%, rgba(42,44,43,0.85) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(74%,rgba(42,44,43,0.89)), color-stop(100%,rgba(42,44,43,0.85))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.89) 74%,rgba(42,44,43,0.85) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.89) 74%,rgba(42,44,43,0.85) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.89) 74%,rgba(42,44,43,0.85) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.89) 74%,rgba(42,44,43,0.85) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', endColorstr='#d92a2c2b',GradientType=0 ); /* IE6-9 */
-    background-color: $black;
-    border-bottom: 2px solid $uteRed;
+ background: -moz-linear-gradient(top,  rgba(30,30,32,1) 0%, rgba(42,44,43,0.88) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(100%,rgba(42,44,43,0.88))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', endColorstr='#e02a2c2b',GradientType=0 ); /* IE6-9 */
+
+
     h3, h2, h5{
       line-height: 1em;
       padding: 0px;
@@ -34,7 +31,7 @@ body{
     h2{
       margin-top: 0em;
       margin-bottom: 0.1em;
-      color: $off_white;
+      color: white;
       font-size: 3em;
     }
     h3{
@@ -55,10 +52,10 @@ body{
       padding-top: 0px;
       display: inline;
       float: left;
-      font-size: 4.3em;
+      font-size: 100px;
       padding-right: 0.3em;
       margin: 0px;
-      color: $off_white;
+      color: white;
     }
     img{
       padding:10px;
@@ -74,7 +71,7 @@ body{
     margin-top: 3em;
   }
   .tile_container{
-    background-color: $off_white;
+    background-color: white;
   }
   #top_slider {
     margin-left:10px;

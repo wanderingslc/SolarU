@@ -21,7 +21,7 @@ $(document).ready ->
       borderRadius: 0
       renderTo: "daily_production"
       type: "areaspline"
-      backgroundColor: "#FCFFF5"
+      backgroundColor: "#ffffff"
       plotBackgroundColor: null
       animation:
         easing: "linear"

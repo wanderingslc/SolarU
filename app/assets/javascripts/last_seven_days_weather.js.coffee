@@ -20,7 +20,7 @@ $(document).ready ->
       borderRadius: 0
       height: ($('body').height() * (1 / 2))
       renderTo: "power_and_weather"
-      backgroundColor: "#FCFFF5"
+      backgroundColor: "#ffffff"
       plotBackgroundColor: null
       style:
         color: "#990000"
