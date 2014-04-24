@@ -26,7 +26,11 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', endColorstr='#d92a2c2b',GradientType=0 ); /* IE6-9 */
     background-color: $black;
     border-bottom: 2px solid $uteRed;
- 
+    h3, h2, h5{
+      line-height: 1em;
+      padding: 0px;
+    }
+    h2
     h4{
       vertical-align: baseline;
       color: #fff;
