@@ -16,28 +16,8 @@
     h5 watts  
 
 
-.main-div 
-  .span2#vital_stats_container.tile_container
-    .row
-      .span12
-        h3 Highest Output: 
-        h2 #{@highestOutput}
-        h5 watts / day
-    .row
-      .span12
-        h3 Average Output: 
-        h2 #{@averageOutput}
-        h5 watts / day
-    .row        
-      .span12
-        h3 Total Output: 
-        h2 #{@total_output}
-        h5 watts   
-
-
-  
-
-  .owl-carousel.span4#top_slider.tile_container
+.main-div.offset1.span10
+  .owl-carousel.span12#top_slider.tile_container
       .span11.comparison_container id="money_saved_container"
         =content_tag :div, nil, :id=> "money_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_money 
         .row
