@@ -10,12 +10,12 @@ body{
   height: 100vh;
   width: 100vw;
   margin: 0px;
-  background-color: $light_black;
+  background-color: $off_white;
   color: $uteRed;
   #header{
     background-color: $black;
     border-bottom: 2px solid $uteRed;
-
+ 
     h4{
       vertical-align: baseline;
       color: #fff;
@@ -36,24 +36,30 @@ body{
       float: left;
     }
   }
-
-  .tile_container{
-    background-color: $black;
+  #forecast_container {
+    
   }
-
+  .tile_container{
+    background-color: $off_white;
+  }
+  #top_slider {
+    margin-left:10px;
+  }
   .comparison_container{
+    max-height: 35%;
     img{
-      height: 300px;
-      width: 300px;
+      margin-top:50px;
+      height: 50%;
+      width: 100%;
     }
     .intro_paragraph, .data_paragraph, .closing_paragraph{
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-bottom: 0.1em;
       text-align: right;
       padding: 0px;
     }
     .intro_paragraph, .closing_paragraph{
-      color: $light_black;
+      color: $grey;
     }
     .data_paragraph{
       font-size: 2em;
@@ -67,7 +73,7 @@ body{
   }
 #vital_stats_container{
   text-align: right;
-
+  
   h2,h3,h5{
     margin: 0.3em 0 0 0;
   }
@@ -78,4 +84,5 @@ body{
 
 
 }
+
 

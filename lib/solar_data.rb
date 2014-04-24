@@ -1,7 +1,7 @@
 module SolarData
   require 'net/http'
 
-  @api_key = ENV["SOLAR_U_API_KEY"]
+  @api_key = ENV["SOLAR_U_API_KEY"] 
   @api_name = ENV["SOLAR_U_API_URL"]
 
   def self.get_energy_lifetime
