@@ -11,7 +11,7 @@ $(document).ready ->
 
   $("#top_slider").owlCarousel(
     singleItem: false,
-    items: 3,
+    items: 2,
     itemsScaleUp: false,
     slideSpeed: 500,
     paginationSpeed: 800,

@@ -17,7 +17,7 @@
 
 
 .main-div.offset1.span10
-  .owl-carousel.span12#top_slider.tile_container
+  .owl-carousel.span5#top_slider.tile_container
       .span11.comparison_container id="money_saved_container"
         =content_tag :div, nil, :id=> "money_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_money 
         .row
@@ -81,7 +81,7 @@
           .span4
             =image_tag("natural_gas.png")  
   
-  .span5#forecast_container.tile_container
+  .span5.offset1#forecast_container.tile_container
       iframe#forecast_embed frameborder="0" height="245" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&name=U of U&color=#2A2C2B&text-color=#2A2C2B&font=helvetica") type="text/html" width="100%" 
 
   .span9.owl-carousel#graph_carousel.tile_container

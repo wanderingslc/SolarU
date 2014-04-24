@@ -15,7 +15,6 @@ body{
   width: 100vw;
   margin: 0px;
   background-color: $off_white;
-  color: $uteRed;
   #header{
     background: -moz-linear-gradient(top,  rgba(30,30,32,1) 0%, rgba(42,44,43,0.89) 74%, rgba(42,44,43,0.85) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(74%,rgba(42,44,43,0.89)), color-stop(100%,rgba(42,44,43,0.85))); /* Chrome,Safari4+ */
@@ -29,8 +28,22 @@ body{
     h3, h2, h5{
       line-height: 1em;
       padding: 0px;
+      color: $uteRed;
     }
-    h2
+    h2{
+      margin-top: 0em;
+      margin-bottom: 0.1em;
+      color: $off_white;
+      font-size: 1.5em;
+    }
+    h3{
+      margin-top: 0.2em;
+      margin-bottom: 0em;
+    }
+    h5{
+      margin-top: 0px;
+
+    }
     h4{
       vertical-align: baseline;
       color: #fff;
