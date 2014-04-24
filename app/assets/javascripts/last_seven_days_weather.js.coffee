@@ -41,7 +41,7 @@ $(document).ready ->
           color: "#cc0000"
 
     title:
-      text: "Energy Production Per Day"
+      text: "Production Over the last 7 days"
       style:
         color: "#cc0000"
         fontWeight: "bold"

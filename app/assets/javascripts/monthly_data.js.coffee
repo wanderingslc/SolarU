@@ -28,7 +28,7 @@ $(document).ready ->
       plotBackgroundColor: null
 
     title:
-      text: "Daily Totals"
+      text: "Daily Totals Over the Last 3 Months"
       style:
         color: "#cc0000"
         fontWeight: "bold"

@@ -31,7 +31,7 @@ $(document).ready ->
         fontSize: "2em"
         title:
           style:
-            color: "#cc0000"
+            color: "#DC3522"
             fontWeight: "bold"
 
     legend:
@@ -42,14 +42,14 @@ $(document).ready ->
       tickColor: "#dac092"
       labels:
         style:
-          color: "#cc0000"
+          color: "#DC3522"
 
     title:
-      text: "Energy Production Per Day"
+      text: "All-time Production"
       style:
-        color: "#cc0000"
+        color: "#DC3522"
         fontWeight: "bold"
-        fontSize: "25px"
+        fontSize: "35px"
         fontFamily: "'orbitron-light', sans-serif"
 
     yAxis:
@@ -57,23 +57,23 @@ $(document).ready ->
         text: "Watt-Hours"
         lineColor: "#dac092"
         style:
-          color: "#cc0000"
+          color: "#DC3522"
 
       labels:
         style:
-          color: "#cc0000"
+          color: "#DC3522"
 
     plotOptions:
       series:
         fillColor:
           linearGradient: [0, 0, 0, 300]
-          stops: [[0, "#00FF64"], [1, "rgba(0, 20, 10, 0.7)"]]
+          stops: [[0, "#53806E"], [1, "rgba(83, 128, 110, 0.8)"]]
 
         shadow: true
         offsetX: "3px"
         offsetY: "3px"
         opacity: "0.6"
-        lineColor: "#00FF64"
+        lineColor: "#53806E"
         marker:
           enabled: false
           
