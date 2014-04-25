@@ -23,7 +23,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
 
 
     h3, h2, h5{
-      line-height: 1em;
+      line-height: 1.5em;
       padding: 0px;
       color: $uteRed;
       text-align: right;
@@ -32,16 +32,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       margin-top: 0em;
       margin-bottom: 0.1em;
       color: white;
-      font-size: 3em;
+      font-size: 1.2em;
     }
     h3{
       margin-top: 0.2em;
       margin-bottom: 0em;
-      font-size: 2em;
+      font-size: 1.4em;
     }
     h5{
       margin-top: 0px;
-      font-size: 1.2em;
+      font-size: 0.6em;
     }
     h4{
       vertical-align: baseline;
@@ -105,12 +105,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
   }
 #vital_stats_container{
   text-align: right;
-  
+  font-size: 1em;
   h2,h3,h5{
     margin: 0.3em 0 0 0;
   }
   h5{
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
 }
 
