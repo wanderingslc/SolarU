@@ -8,7 +8,7 @@ $grey: #808080;
 body{
   font-size: 20px;
   font-family: "opensans";
-  height: 100vh;
+  height: 90%;
   width: 100vw;
   margin: 0px;
   background-color: white;
@@ -26,7 +26,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       line-height: 1em;
       padding: 0px;
       color: $uteRed;
-      text-align: right;
+      text-align: left;
     }
     h2{
       margin-top: 0em;
@@ -63,12 +63,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       vertical-align: baseline;
     }
   }
-  #forecast_container {
-    
-  }
-
   #main-div{
-    margin-top: 3em;
+    margin-top: 1em;
+    max-height: 25%;
   }
   .tile_container{
     background-color: white;
@@ -77,31 +74,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
     margin-left:10px;
   }
   .comparison_container{
-    max-height: 35%;
     img{
-      margin-top:50px;
-      height: 50%;
-      width: 100%;
+      // margin-top:50px;
+      float: right;
+      margin: 3px;
+      height: 100px;
+      width: 100px;
     }
     .intro_paragraph, .data_paragraph, .closing_paragraph{
-      font-size: 1.2em;
+      font-size: 1.0em;
       margin-bottom: 0.1em;
-      text-align: right;
+      text-align: left;
       padding: 0px;
+
     }
     .intro_paragraph, .closing_paragraph{
       color: $black;
       color: $grey;
-    }
+          }
     .data_paragraph{
-      font-size: 2em;
+      font-size: 1.5em;
       margin: 0px;
-      padding: 20px 0 0 0;
+      padding: 5px 0 0 0;
     }
     p{
       padding: 1em;
       text-align: center;      
     }
+  }
+  #graph_carousel {
+   
   }
 #vital_stats_container{
   text-align: right;
