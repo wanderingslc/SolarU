@@ -6,7 +6,7 @@ $grey: #808080;
 
 
 body{
-  font-size: 20px;
+  font-size: 18px;
   font-family: "opensans";
   height: 100vh;
   width: 100vw;
@@ -84,7 +84,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       width: 100%;
     }
     .intro_paragraph, .data_paragraph, .closing_paragraph{
-      font-size: 1.2em;
+      font-size: 1em;
       margin-bottom: 0.1em;
       text-align: right;
       padding: 0px;
@@ -94,7 +94,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       color: $grey;
     }
     .data_paragraph{
-      font-size: 2em;
+      font-size: 1.5em;
       margin: 0px;
       padding: 20px 0 0 0;
     }
