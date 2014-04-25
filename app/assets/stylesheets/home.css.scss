@@ -78,13 +78,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
   }
   .comparison_container{
     max-height: 35%;
+    p {
+      margin: 5px 15px 0px 0px;
+    }
     img{
       margin-top:50px;
       height: 50%;
       width: 100%;
     }
     .intro_paragraph, .data_paragraph, .closing_paragraph{
-      font-size: 1em;
+      font-size: 0.8em;
       margin-bottom: 0.1em;
       text-align: right;
       padding: 0px;
@@ -94,9 +97,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       color: $grey;
     }
     .data_paragraph{
-      font-size: 1.5em;
+      font-size: 1em;
       margin: 0px;
-      padding: 20px 0 0 0;
     }
     p{
       padding: 1em;
