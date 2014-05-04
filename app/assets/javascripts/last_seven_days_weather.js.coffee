@@ -27,8 +27,8 @@ $(document).ready ->
         fontSize: "2em"
         title:
           style:
+            fontFamily: "'opensans', sans-serif"            
             color: "#cc0000"
-            fontWeight: "bold"
 
     legend:
       enabled: true
@@ -44,7 +44,6 @@ $(document).ready ->
       text: "Production Over the last 7 days"
       style:
         color: "#cc0000"
-        fontWeight: "bold"
         fontSize: "25px"
 
     yAxis: [

@@ -39,12 +39,12 @@ class HomeController < ApplicationController
 
     # comparisons-------------------------------------------------------------------------------------
     @comparison_money = (((@total_output / 1000) * 7.74) / 100).round(2)
-    @comparison_trees = (@total_output / 55300).round(2)
-    @comparison_coffee = (@total_output / 80).round(2)
-    @comparison_laptops = (@total_output / 55).round(2)
-    @comparison_houses = (@total_output / 10837000).round(2)
+    @comparison_trees = ((@total_output * 0.000689551) * 0.039).round(2)
+    @comparison_coffee = (@total_output / 80).round(0)
+    @comparison_laptops = (@total_output / 55).round(0)
+    @comparison_houses = (@total_output / (10837000 / 12)).round(0)
     @comparison_coal = (@total_output / 900).round(2)
-    @comparison_natural_gas = (@total_output / 127).round(2)
+    @comparison_co2 = (@total_output * 0.000689551).round(2)
 
     # last three months -----------------------------------------------------------------------------
 

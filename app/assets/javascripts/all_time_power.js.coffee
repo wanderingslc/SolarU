@@ -29,10 +29,7 @@ $(document).ready ->
       style:
         color: "#990000"
         fontSize: "2em"
-        title:
-          style:
-            color: "#DC3522"
-            fontWeight: "bold"
+        fontFamily: "'opensans', sans-serif"                    
 
     legend:
       enabled: false
@@ -48,9 +45,8 @@ $(document).ready ->
       text: "All-time Production"
       style:
         color: "#DC3522"
-        fontWeight: "bold"
-        fontSize: "35px"
-        fontFamily: "'orbitron-light', sans-serif"
+        fontSize: "25px"
+
 
     yAxis:
       title:

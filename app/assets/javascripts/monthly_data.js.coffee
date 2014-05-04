@@ -26,6 +26,7 @@ $(document).ready ->
       type: "areaspline"
       backgroundColor: "#ffffff"
       plotBackgroundColor: null
+      fontFamily: "'opensans', sans-serif"
 
     title:
       text: "Daily Totals Over the Last 3 Months"
@@ -33,7 +34,7 @@ $(document).ready ->
         color: "#cc0000"
         fontWeight: "bold"
         fontSize: "25px"
-        fontFamily: "'orbitron-light', sans-serif"
+        fontFamily: "'opensans', sans-serif"
 
     legend:
       enabled: true

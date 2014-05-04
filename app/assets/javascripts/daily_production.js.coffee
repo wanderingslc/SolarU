@@ -48,6 +48,7 @@ $(document).ready ->
     title:
       text: "Energy Produced today, by the Hour"
       style:
+        fontFamily: "'opensans', sans-serif"        
         color: "#cc0000"
         fontWeight: "bold"
         fontSize: "25px"

@@ -1,8 +1,7 @@
 $uteRed: #cc0000;
-// #CC0000;
 $black: #000000;
 $grey: #808080;
-
+// 1380x856
 
 
 body{
@@ -13,43 +12,27 @@ body{
   margin: 0px;
   background-color: white;
   #header{
- background: -moz-linear-gradient(top,  rgba(30,30,32,1) 0%, rgba(42,44,43,0.88) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(100%,rgba(42,44,43,0.88))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', endColorstr='#e02a2c2b',GradientType=0 ); /* IE6-9 */
-
-
-    h3, h2, h5{
-      line-height: 1.5em;
-      padding: 0px;
-      color: $uteRed;
-      text-align: right;
+    height: 85px;
+    background-color: black;
+    .stats_tab{
+      padding-bottom: 15px;
     }
-    h2{
-      margin-top: 0em;
-      margin-bottom: 0.1em;
+    .stats_span{
+      font-size: 1.5em;
       color: white;
-      font-size: 0.9em;
     }
     h3{
-      margin-top: 0.2em;
-      margin-bottom: 0em;
-      font-size: 1em;
+      color: $uteRed;
+      test-align: right;
     }
-    h5{
+    .stats_unit{
+      font-size: 0.8em;
+      color: $uteRed;
       margin-top: 0px;
-      font-size: 0.6em;
-    }
-    h4{
-      vertical-align: baseline;
-      color: #fff;
-      margin: 0px;
     }
     h1{
       padding-top: 0px;
+      padding-right: 1em;
       display: inline;
       float: left;
       font-size: 50px;
@@ -64,41 +47,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
     }
   }
   #forecast_container {
-    
+    margin-right: 0px;
+    float: right;
   }
 
   #main-div{
-    margin-top: 3em;
+    margin-top: 5vh;
+    height: 25vh;
   }
   .tile_container{
     background-color: white;
   }
   #top_slider {
     margin-left:10px;
+    height: 100%;
   }
   .comparison_container{
-    max-height: 35%;
+    height: 100%;
     p {
-      margin: 5px 15px 0px 0px;
+      padding: 15px 1em 15px 15px;
+      text-align: left;
     }
     img{
-      margin-top:50px;
-      height: 50%;
-      width: 100%;
-    }
-    .intro_paragraph, .data_paragraph, .closing_paragraph{
-      font-size: 0.8em;
-      margin-bottom: 0.1em;
-      text-align: right;
-      padding: 0px;
-    }
-    .intro_paragraph, .closing_paragraph{
-      color: $black;
-      color: $grey;
+      margin-top:15px;
+      height: 214px;
+      width: 214px;
     }
     .data_paragraph{
       font-size: 1em;
-      margin: 0px;
+      color: $uteRed;
     }
     p{
       padding: 1em;
@@ -115,6 +92,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
     margin-bottom: 1em;
   }
 }
+
+  #graph_carousel{
+    margin-top: 5vh;
+    max-height: 60vh;
+  }
 
 
 }
