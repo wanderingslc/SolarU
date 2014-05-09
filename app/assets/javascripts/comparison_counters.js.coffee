@@ -10,7 +10,8 @@ $(document).ready ->
   setValues()
 
   $("#top_slider").owlCarousel(
-    singleItem: true,
+    singleItem: false,
+    items: 2,
     itemsScaleUp: false,
     slideSpeed: 500,
     paginationSpeed: 3000,
