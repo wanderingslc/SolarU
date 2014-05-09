@@ -12,14 +12,14 @@ body{
   margin: 0px;
   background-color: white;
   #header{
-<<<<<<< HEAD
+
  background: -moz-linear-gradient(top,  rgba(30,30,32,1) 0%, rgba(42,44,43,0.88) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(100%,rgba(42,44,43,0.88))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', endColorstr='#e02a2c2b',GradientType=0 ); /* IE6-9 */
+ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(100%,rgba(42,44,43,0.88))); /* Chrome,Safari4+ */
+ background: -webkit-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Chrome10+,Safari5.1+ */
+ background: -o-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Opera 11.10+ */
+ background: -ms-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* IE10+ */
+ background: linear-gradient(to bottom,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', endColorstr='#e02a2c2b',GradientType=0 ); /* IE6-9 */
 
 
     h3, h2, h5{
@@ -27,7 +27,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       padding: 0px;
       color: $uteRed;
       text-align: left;
-=======
+
     height: 85px;
     background-color: black;
     .stats_tab{
@@ -44,9 +44,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       margin-bottom: 0em;
       font-size: 2.5em;
       font-weight: 900;
-=======
+
       color: $uteRed;
-      test-align: right;
+      text-align: right;
 
     }
     .stats_unit{
@@ -71,10 +71,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
     }
   }
 
-  #main-div{
-    margin-top: 1em;
-    max-height: 25%;
-=======
+ 
+
   #forecast_container {
     margin-right: 0px;
     float: right;
@@ -83,7 +81,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
   #main-div{
     margin-top: 1vh;
     height: 25vh;
-
   }
   .tile_container{
     background-color: white;
@@ -131,11 +128,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
     .data_paragraph{
       font-size: 1em;
       color: $uteRed;
-
     }
-  }
-  #graph_carousel {
-   
   }
 #vital_stats_container{
   text-align: right;
