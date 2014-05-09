@@ -52,7 +52,7 @@ body{
   }
 
   #main-div{
-    margin-top: 5vh;
+    margin-top: 1vh;
     height: 25vh;
   }
   .tile_container{
@@ -69,8 +69,6 @@ body{
     }
     img{
       margin-top:15px;
-      height: 214px;
-      width: 214px;
     }
     .data_paragraph{
       font-size: 1em;
@@ -89,10 +87,16 @@ body{
 }
 
   #graph_carousel{
-    margin-top: 5vh;
-    max-height: 60vh;
+    margin-top: 1vh;
+    height: 40vh;
   }
 
+
+  #footer{
+    background-color: $black;
+    color: white;
+    height: 10vh;
+  }
 
 }
 
