@@ -95,6 +95,9 @@ GEM
       guard (>= 2.0.0)
     hike (1.2.3)
     http_parser.rb (0.5.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     hub (1.12.0)
     i18n (0.6.9)
     journey (1.0.4)
@@ -125,6 +128,7 @@ GEM
     minitest-wscolor (0.0.3)
       minitest (>= 2.3.1)
     multi_json (1.9.2)
+    multi_xml (0.5.5)
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -229,6 +233,7 @@ DEPENDENCIES
   guard-minitest
   guard-pow
   guard-rails
+  httparty
   hub
   jquery-rails
   meta_request

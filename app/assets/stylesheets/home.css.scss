@@ -59,7 +59,6 @@ body{
     background-color: white;
   }
   #top_slider {
-    margin-left:10px;
     height: 100%;
   }
   .comparison_container{
@@ -76,10 +75,6 @@ body{
     .data_paragraph{
       font-size: 1em;
       color: $uteRed;
-    }
-    p{
-      padding: 1em;
-      text-align: center;      
     }
   }
 #vital_stats_container{

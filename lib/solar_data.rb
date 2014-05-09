@@ -5,6 +5,7 @@ module SolarData
   @api_name = ENV["SOLAR_U_API_URL"]
 
   def self.get_energy_lifetime
+    # watt hours
     uri = URI("#{@api_name}/energy_lifetime")
     params = { :key => @api_key }
     uri.query = URI.encode_www_form(params)
@@ -51,6 +52,7 @@ module SolarData
 # ------------- monthly graph ------------- ------------- ------------- 
 
   def self.slice_lifetime_into_month(month_to_slice)
+    # watt hours (comes from energy lifetime)
     start_day = Time.at(EnergyLifetimeArray.last.unix_time)
     puts "Start day: #{start_day}"
     days_before_month = ((month_to_slice - start_day) / 86400).round
@@ -63,6 +65,8 @@ module SolarData
 
 # ---------------------- Last 7 Days -------------------------------
   def self.get_trailing_seven_days
+    # can be in watts or watt-hours but watts are significantly lower and may be confusing if you 
+    # compare them to the all_time graph
     today = Time.now.beginning_of_day.strftime('%Y-%m-%d')
     minus_seven_days = (Time.now.beginning_of_day - 7.days).strftime('%Y-%m-%d')
     response_array = []
@@ -99,21 +103,22 @@ module SolarData
       if res.code == '200'
         parsedResponse = JSON.parse(res.body)
         parsedResponse['intervals'].each do |y|
-          response_array << y['powr']
+          response_array << y['enwh']
         end
+        x = LastSevenDaysArray.new
+        x.power_array = response_array.in_groups_of(6).map{|a| a.reduce(:+)}
+        x.start_date = Time.now.beginning_of_day - 7.days.to_i
+        x.save        
       else
         Rails.logger.error "error running seven_days at #{Time.now}"
       end
     end
-    x = LastSevenDaysArray.new
-    x.power_array = response_array.in_groups_of(6).map{|a| a.reduce(:+)}
-    x.start_date = Time.now.beginning_of_day - 7.days.to_i
-    x.save
   end
 
 # ------------------------Current Production --------------------------
 
   def self.get_current_production
+    # can be in either watts or wh, currently storing both
     10.times do 
       uri=URI("#{@api_name}/stats")
       params = { :key => @api_key}  
@@ -164,7 +169,7 @@ module SolarData
         dailyData.save
         break
       else
-        Rails.logger.error "Unhandled failure for SolarData.get_current_production at #{Time.now}"
+        Rails.logger.error "Unhandled failure for SolarData.get_current_production at #{Time.now}, #{res.body}"
       end
     end
   end
