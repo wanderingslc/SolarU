@@ -1,18 +1,18 @@
 $uteRed: #cc0000;
-// #CC0000;
 $black: #000000;
 $grey: #808080;
-
+// 1380x856
 
 
 body{
-  font-size: 20px;
+  font-size: 16px;
   font-family: "opensans";
   height: 90%;
   width: 100vw;
   margin: 0px;
   background-color: white;
   #header{
+<<<<<<< HEAD
  background: -moz-linear-gradient(top,  rgba(30,30,32,1) 0%, rgba(42,44,43,0.88) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,30,32,1)), color-stop(100%,rgba(42,44,43,0.88))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top,  rgba(30,30,32,1) 0%,rgba(42,44,43,0.88) 100%); /* Chrome10+,Safari5.1+ */
@@ -27,33 +27,39 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       padding: 0px;
       color: $uteRed;
       text-align: left;
+=======
+    height: 85px;
+    background-color: black;
+    .stats_tab{
+      padding-bottom: 15px;
+
     }
-    h2{
-      margin-top: 0em;
-      margin-bottom: 0.1em;
+    .stats_span{
+      font-size: 1.5em;
       color: white;
-      font-size: 3em;
     }
     h3{
+
       margin-top: 0.2em;
       margin-bottom: 0em;
       font-size: 2.5em;
       font-weight: 900;
+=======
+      color: $uteRed;
+      test-align: right;
+
     }
-    h5{
+    .stats_unit{
+      font-size: 0.8em;
+      color: $uteRed;
       margin-top: 0px;
-      font-size: 1.2em;
-    }
-    h4{
-      vertical-align: baseline;
-      color: #fff;
-      margin: 0px;
     }
     h1{
       padding-top: 0px;
+      padding-right: 1em;
       display: inline;
       float: left;
-      font-size: 100px;
+      font-size: 50px;
       padding-right: 0.3em;
       margin: 0px;
       color: white;
@@ -64,17 +70,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
       vertical-align: baseline;
     }
   }
+
   #main-div{
     margin-top: 1em;
     max-height: 25%;
+=======
+  #forecast_container {
+    margin-right: 0px;
+    float: right;
+  }
+
+  #main-div{
+    margin-top: 1vh;
+    height: 25vh;
+
   }
   .tile_container{
     background-color: white;
   }
   #top_slider {
-    margin-left:10px;
+    height: 100%;
   }
   .comparison_container{
+
     img{
       // margin-top:50px;
       float: right;
@@ -101,6 +119,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
     p{
       padding: 0.1em;
       text-align: center;      
+
+    height: 100%;
+    p {
+      padding: 15px 1em 15px 15px;
+      text-align: left;
+    }
+    img{
+      margin-top:15px;
+    }
+    .data_paragraph{
+      font-size: 1em;
+      color: $uteRed;
+
     }
   }
   #graph_carousel {
@@ -108,15 +139,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e20', end
   }
 #vital_stats_container{
   text-align: right;
-  
+  font-size: 1em;
   h2,h3,h5{
     margin: 0.3em 0 0 0;
   }
   h5{
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
 }
 
+  #graph_carousel{
+    margin-top: 1vh;
+    height: 40vh;
+  }
+
+
+  #footer{
+    background-color: $black;
+    color: white;
+    height: 10vh;
+  }
 
 }
 
