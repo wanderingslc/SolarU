@@ -1,89 +1,4 @@
 
-.row id="header"
-  .span3
-    h1 SOLAR
-    =image_tag("u_logo.png", size: "100x100")
-  .span3
-    h3 Highest Output: 
-    h2 #{@highestOutput}
-    h5 watts / day
-  .span3
-    h3 Average Output: 
-    h2 #{@averageOutput}
-    h5 watts / day
-  .span3
-    h3 Total Output: 
-    h2 #{@total_output}
-    h5 watts  
-
-
-#main-div.offset1.span10
-  .owl-carousel.span5#top_slider.tile_container
-      .span11.comparison_container id="money_saved_container"
-        =content_tag :div, nil, :id=> "money_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_money 
-        .row
-          .span12
-            =image_tag("money.svg")
-            p.intro_paragraph In total, this array has saved
-            p.data_paragraph $
-          
-      .span11.comparison_container id="trees_container"
-        =content_tag :div, nil, :id=> "trees_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_trees 
-        .row
-          .span12
-            =image_tag("tree.png")
-            p.intro_paragraph This array has produced enough energy to equal the CO2 offset of
-            p.data_paragraph
-            p.closing_paragraph trees
-           
-      .span11.comparison_container id="coffee_container"
-        =content_tag :div, nil, :id=> "coffee_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_coffee 
-        .row
-          .span12
-            =image_tag("coffee.png")
-            p.intro_paragraph This array has produced enough power to brew
-            p.data_paragraph
-            p.closing_paragraph cups of coffee
-          
-            
-      .span11.comparison_container#laptops_container
-        =content_tag :div, nil, :id=> "laptops_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_laptops 
-        .row
-          .span12
-            =image_tag("laptop.svg")
-            p.intro_paragraph This array has produced enough power to run
-            p.data_paragraph
-            p.closing_paragraph laptops for one hour
-      .span11.comparison_container id="house_container"
-        =content_tag :div, nil, :id=> "houses_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_houses 
-        .row
-          .span12
-            =image_tag("house.svg")
-            p.intro_paragraph This array has produced enough energy to power
-            p.data_paragraph
-            p.closing_paragraph average American homes
-      .span11.comparison_container id="coal_container"
-        =content_tag :div, nil, :id=> "coal_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_coal 
-        .row
-          .span12
-            =image_tag("coal_plant.png")
-            p.intro_paragraph This array has produced enough energy to offset the burning of
-            p.data_paragraph
-            p.closing_paragraph pounds of coal
-          
-      .span11.comparison_container id="natural_gas_container"
-        =content_tag :div, nil, :id=> "gas_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_gas 
-        .row
-          .span12
-            =image_tag("natural_gas.png")
-            p.intro_paragraph This array has produced enough energy to offset the burning of 
-            p.data_paragraph
-            p.closing_paragraph pounds of natural gas
-          
-  
-  .span5.offset1#forecast_container.tile_container
-      iframe#forecast_embed frameborder="0" height="245" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&name=U of U&color=#2A2C2B&text-color=#2A2C2B&font=helvetica") type="text/html" width="100%" 
-
 .row#header
   .span3
     h1 SOLAR
@@ -101,50 +16,54 @@
       .span11.comparison_container id="trees_container"
         =content_tag :div, nil, :id=> "trees_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_trees 
         .row
-          .span7
-            p.intro_paragraph 
-            | Each urban tree planted removes 0.039 metric tons of CO2 from the atmosphere over a 10-year period. With that in mind, this array has produced enough energy to offset enough atmospheric CO2 equivalent to <span class="data_paragraph"></span> trees. 
-          .span5
+          .span12
             =image_tag("tree.png", size:"100x100")
+            p.intro_paragraph 
+            | Each urban tree planted removes 0.039 metric tons of CO2 from the atmosphere over a 10-year period. With that in mind, this array has produced enough energy to offset enough atmospheric CO2 equivalent to <span class="data_paragraph"></span>  trees. 
+           
       .span11.comparison_container id="coffee_container"
         =content_tag :div, nil, :id=> "coffee_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_coffee 
         .row
-          .span7
-            p.intro_paragraph 
-            | Brewing a cup of coffee requires about 80 watts of energy. In total, this array has brewed about <span class="data_paragraph"></span> cups of coffee.
-          .span5
+          .span12
             =image_tag("coffee.png", size:"100x100")
+            p.intro_paragraph 
+            | Brewing a cup of coffee requires about 80 watts of energy. In total, this array has brewed about <span class="data_paragraph"></span>  cups of coffee.
+          
+            
       .span11.comparison_container#laptops_container
         =content_tag :div, nil, :id=> "laptops_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_laptops 
         .row
-          .span7
-            p.intro_paragraph 
-            | To run an average laptop for an hour requires 55 watts. In total, this array has produced enough energy to power <span class="data_paragraph"></span> laptops for an hour. 
-          .span5
+          .span12
             =image_tag("laptop.png", size:"100x100")
+            p.intro_paragraph 
+            | To run an average laptop for an hour requires 55 watts. In total, this array has produced enough energy to power <span class="data_paragraph"></span>  laptops for an hour. 
+          
+           
       .span11.comparison_container id="house_container"
         =content_tag :div, nil, :id=> "houses_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_houses 
         .row
-          .span7
-            p.intro_paragraph The average American home consumes 10837 kilowatt-hours per year. This array has produced enough energy to power such a household for <span class="data_paragraph"></span> months
-          .span5
+          .span12
             =image_tag("house.png", size:"100x100")
+            p.intro_paragraph The average American home consumes 10837 kilowatt-hours per year. This array has produced enough energy to power such a household for <span class="data_paragraph"></span>  months
+          
+            
       .span11.comparison_container id="coal_container"
         =content_tag :div, nil, :id=> "coal_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_coal 
         .row
-          .span7
-            p.intro_paragraph 
-            | Each pound of coal burned provides approximately 900 kilowatt-hours. In total, this array has prevented the need to burn <span class="data_paragraph"></span> pounds of coal. 
-          .span5
+          .span12
             =image_tag("coal_plant.png", size:"100x100")
+            p.intro_paragraph 
+            | Each pound of coal burned provides approximately 900 kilowatt-hours. In total, this array has prevented the need to burn <span class="data_paragraph"></span>  pounds of coal. 
+          
+            
       .span11.comparison_container id="co2_container"
         =content_tag :div, nil, :id=> "gas_comparison", :class => "comparison_div", :"data-comparison"=> @comparison_co2 
         .row
-          .span7
-            p.intro_paragraph From conventional sources, producing 1 kilowatt-hour of electricity releases 0.000689551 metric tons of CO2 into the atmosphere. By utilizing solar panels, this building has prevented the release of <span class="data_paragraph"></span> tons of CO2 into the atmosphere. 
-          .span4
+          .span12
             =image_tag("natural_gas.png" , size:"100x100" )
-
+            p.intro_paragraph From conventional sources, producing 1 kilowatt-hour of electricity releases 0.000689551 metric tons of CO2 into the atmosphere. By utilizing solar panels, this building has prevented the release of <span class="data_paragraph"></span>  tons of CO2 into the atmosphere. 
+          
+            
 
   .span6#forecast_container.tile_container
       iframe#forecast_embed frameborder="0" height="214" src=("http://forecast.io/embed/#lat=40.7650&lon=-111.8500&name=U of U&color=#2A2C2B&text-color=#2A2C2B&font=helvetica") type="text/html" width="100%" 
@@ -161,4 +80,5 @@
       =content_tag :div, nil, :id=> "monthly_data", :class=>"span12", :"data-monthly-name-one"=> @monthly_name_one, :"data-monthly-name-two"=> @monthly_name_two, :"data-monthly-name-three"=> @monthly_name_three, :"data-monthly-data-one"=> @monthly_data_one, :"data-monthly-data-two"=> @monthly_data_two, :"data-monthly-data-three"=> @monthly_data_three
 
 #footer.span12
-  p Built by DevPoint Labs
+     =image_tag("dpllogo.png")
+

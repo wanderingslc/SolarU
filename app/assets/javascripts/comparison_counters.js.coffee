@@ -5,7 +5,7 @@ $(document).ready ->
   setValues = () ->
     for data in comparisons
       comparison_data = $(data).find('.comparison_div').data('comparison')
-      $(data).find(".data_paragraph").append(comparison_data)
+      $(data).find(".data_paragraph").append(comparison_data, " ")
 
   setValues()
 
